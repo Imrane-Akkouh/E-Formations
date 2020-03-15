@@ -1,0 +1,4 @@
+
+@function theme-gradient-color($key: "primary") {
+  @return map-get($theme-gradient-colors, $key);
+}
