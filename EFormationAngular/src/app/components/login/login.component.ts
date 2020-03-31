@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LoginService } from '../../services/login.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +9,27 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginComponent implements OnInit {
 
+  username:string = "";
+  password: string = "";
+
   @ViewChild('container') container : ElementRef;
-  constructor(private auth: LoginService) { }
+
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
   }
+
+  
+  authenticate(){
+    this.auth.authenticateUser(this.username, this.password)
+    .subscribe(token=>{
+      console.log(token);
+    });
+  }
+
+
+
+
 
   signUpButton(){
     this.container.nativeElement.classList.toggle("right-panel-active");
@@ -21,4 +38,5 @@ export class LoginComponent implements OnInit {
   signInButton(){
 	  this.container.nativeElement.classList.toggle("right-panel-active");
   };
+
 }
