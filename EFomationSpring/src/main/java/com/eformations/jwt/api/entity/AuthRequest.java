@@ -9,14 +9,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthRequest {
 
-    private String userName;
+    private String username;
     private String password;
+    private String role;
     
-	public String getUserName() {
-		return userName;
+	public String getRole() {
+		return role;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;
