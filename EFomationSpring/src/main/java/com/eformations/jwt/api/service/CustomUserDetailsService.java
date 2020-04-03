@@ -19,6 +19,7 @@ import java.util.Set;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
+	
     @Autowired
     private UserRepository repository;
     @Autowired
@@ -27,8 +28,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = repository.findByUsername(username);
+        
         if(user != null) {
+        	
             List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
+            
             return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
         } else {
         	return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
