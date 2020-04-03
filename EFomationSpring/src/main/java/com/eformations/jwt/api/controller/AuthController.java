@@ -19,10 +19,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins="*",allowedHeaders = "*")
 public class AuthController {
 	@Autowired
     private UserRepository userRepo;
@@ -33,19 +34,14 @@ public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @GetMapping("/")
-    public String welcome() {
-        return "Welcome to eformations !!";
-    }
-
     @PostMapping("/authenticate")
-    public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+    public String generateToken(@RequestBody AuthRequest authRequest) throws Exception{
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
             );
         } catch (Exception ex) {
-            throw new Exception("inavalid username/password");
+            throw new Exception("Invalid username/password");
         }
         return jwtUtil.generateToken(authRequest.getUsername());
     }
@@ -54,9 +50,13 @@ public class AuthController {
     public String register(@RequestBody AuthRequest authRequest) throws Exception {
         Role role = roleRepo.findByRole(authRequest.getRole());
         User user = new User(authRequest.getUsername(), (new BCryptPasswordEncoder()).encode(authRequest.getPassword()),new HashSet<Role>(Arrays.asList(role)));
-        
-        System.out.println(authRequest.getUsername() + " " + (new BCryptPasswordEncoder()).encode(authRequest.getPassword()) + " " + authRequest.getRole());
-        userRepo.save(user);
+        try {
+            userRepo.save(user);
+        } catch (Exception ex) {
+            throw new Exception("Duplicate username");
+        }
         return jwtUtil.generateToken(authRequest.getUsername());
     }
+    
+    
 }
