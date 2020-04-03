@@ -1,16 +1,25 @@
 <div class="container" #container>
 	<div class="form-container sign-up-container">
-		<form action="#">
+		<form>
 			<h1>Create Account</h1>
 			<div class="social-container">
 				<a href="#" class="social facebook"><i class="fa fa-facebook"></i></a>
 				<a href="#" class="social google"><i class="fa fa-google-plus"></i></a>
 			</div>
 			<span>or use your email for registration</span>
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<button >Sign Up</button>
+			<input type="text" [(ngModel)]="username" name="username" placeholder="Username" />
+			<input type="password" [(ngModel)]="password" name="password" placeholder="Password" />
+			<div style="width:100%; margin: 1.5vh 0 2vh 0;background-color: #eee; display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;">
+				<span [ngClass]="{checked: role === 'BENEFICIAIRE'}" class="check">
+					<input type="radio" id="beneficiaire" name="role" value="beneficiaire" (change)="handleChange($event)" checked="checked">
+					<label class="label" for="beneficiaire">Beneficiaire</label>
+				</span>
+				<span [ngClass]="{checked: role === 'FORMATEUR'}" class="check">
+					<input type="radio"  id="formateur" name="role" value="formateur" (change)="handleChange($event)">
+					<label class="label" for="formateur">Formateur</label>
+				</span>
+			</div>
+			<button (click)="register()">Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
@@ -21,7 +30,7 @@
 				<a href="#" class="social google"><i class="fa fa-google-plus"></i></a>
 			</div>
 			<span>or use your account</span>
-			<input type="email" [(ngModel)]="username" name="username" placeholder="Email" />
+			<input type="text" [(ngModel)]="username" name="username" placeholder="Username" />
 			<input type="password" [(ngModel)]="password" name="password" placeholder="Password" />
 			<a href="#">Forgot your password?</a>
 			<button (click)="authenticate()">Sign In</button>
@@ -40,7 +49,5 @@
 				<button class="ghost" id="signUp" (click)="signUpButton()">Sign Up</button>
 			</div>
 		</div>
-    </div>
+	</div>
 </div>
-
-

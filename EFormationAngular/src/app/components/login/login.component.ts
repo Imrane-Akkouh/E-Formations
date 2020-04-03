@@ -9,34 +9,50 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  username:string = "";
+  username: string = "";
   password: string = "";
+  role: string = "BENEFICIAIRE";
 
-  @ViewChild('container') container : ElementRef;
+  @ViewChild('container') container: ElementRef;
 
   constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  
-  authenticate(){
+
+  authenticate() {
     this.auth.authenticateUser(this.username, this.password)
-    .subscribe(token=>{
-      console.log(token);
-    });
+      .subscribe(token => {
+        console.log(token);
+      });
+  }
+
+  register() {
+    this.auth.registerUser(this.username, this.password, this.role)
+      .subscribe(token => {
+        console.log(token);
+      })
+  }
+
+  handleChange(evt){
+    if(this.role === "BENEFICIAIRE" ){
+      this.role = "FORMATEUR";
+    }else{
+      this.role = "BENEFICIAIRE";
+    }
   }
 
 
 
 
 
-  signUpButton(){
+  signUpButton() {
     this.container.nativeElement.classList.toggle("right-panel-active");
   };
 
-  signInButton(){
-	  this.container.nativeElement.classList.toggle("right-panel-active");
+  signInButton() {
+    this.container.nativeElement.classList.toggle("right-panel-active");
   };
 
 }
