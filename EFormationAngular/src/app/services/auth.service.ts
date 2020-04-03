@@ -14,7 +14,12 @@ export class AuthService {
 
   authenticateUser(username:string, password:string) {
 
-    return this.http.post('http://localhost:8080/authenticate', {userName:username, password: password}, { responseType: 'text' as 'json' });
+    return this.http.post('http://localhost:8080/authenticate', {username:username, password: password}, { responseType: 'text' as 'json' });
+  }
+
+  registerUser(username:string, password:string, role:string) {
+
+    return this.http.post('http://localhost:8080/register', {username: username, password: password, role: role}, { responseType: 'text' as 'json' });
   }
 
 
