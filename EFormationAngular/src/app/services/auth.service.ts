@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user.model';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnInit{
 
   user: User;
   authToken: any;
@@ -16,6 +16,12 @@ export class AuthService {
     }
   }
 
+  ngOnInit(){
+    if(this.isLoggedIn()){
+      this.user = this.getCurrentUser();
+      this.authToken = this.getToken();
+    }
+  }
 
   authenticateUser(username:string, password:string) {
 
@@ -66,6 +72,23 @@ export class AuthService {
   getCurrentUser() {
     this.user = JSON.parse(localStorage.getItem('user'));
     return this.user;
+  }
+
+  isFormateur(){
+    if(this.isLoggedIn()){
+      return (this.getCurrentUser().role == "FORMATEUR");
+    }else{
+      return false;
+    }
+  }
+
+
+  isBeneficiaire(){
+    if(this.isLoggedIn()){
+      return this.getCurrentUser().role == "BENEFICIAIRE";
+    }else{
+      return false;
+    }
   }
 
 }

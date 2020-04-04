@@ -1,1 +1,8 @@
-<p>navbar component works</p>
+<div class="containing lightGreen pullDown" style="width: 100%;">
+    <a class="logo" [routerLink]="homepage">e-Formations</a>
+    <div>
+        <a class="navigation" [routerLink]="homepage">Mes Formations</a>
+        <a class="navigation">Profil</a>
+        <a class="navigation" (click)="logout()">Se Deconnecter</a>
+    </div>
+</div>

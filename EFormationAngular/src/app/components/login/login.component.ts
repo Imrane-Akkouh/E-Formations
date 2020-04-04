@@ -43,7 +43,11 @@ export class LoginComponent implements OnInit {
       .then(res=>{
         let user :any = res;
         this.auth.storeUserData(userToken, new User(user.id, this.username, user.roles[0].role));
-        this.router.navigate(['/']);
+        if(user.roles[0].role == "BENEFICIAIRE"){
+          this.router.navigate(['/beneficiaire']);
+        }else{
+          this.router.navigate(['/formateur']);
+        }
       })
       .catch((err)=>{
         try{
@@ -67,7 +71,11 @@ export class LoginComponent implements OnInit {
       .then(res => {
         let user: any = res;
         this.auth.storeUserData(userToken, new User(user.id, this.username, user.roles[0].role));
-        this.router.navigate(['/']);
+        if(user.roles[0].role == "BENEFICIAIRE"){
+          this.router.navigate(['/beneficiaire']);
+        }else{
+          this.router.navigate(['/formateur']);
+        }
         return;
       })
       .catch((err)=>{
