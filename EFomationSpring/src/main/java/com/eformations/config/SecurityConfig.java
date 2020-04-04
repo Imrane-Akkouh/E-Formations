@@ -1,7 +1,8 @@
-package com.eformations.jwt.api.config;
+package com.eformations.config;
 
-import com.eformations.jwt.api.filter.JwtFilter;
-import com.eformations.jwt.api.service.CustomUserDetailsService;
+import com.eformations.filters.JwtFilter;
+import com.eformations.services.CustomUserDetailsService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

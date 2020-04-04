@@ -1,4 +1,4 @@
-package com.eformations.jwt.api.models;
+package com.eformations.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

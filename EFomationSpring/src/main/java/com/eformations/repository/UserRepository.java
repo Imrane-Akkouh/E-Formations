@@ -1,8 +1,9 @@
-package com.eformations.jwt.api.repository;
+package com.eformations.repository;
 
-import com.eformations.jwt.api.entity.Users;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+
+import com.eformations.entities.Users;
 
 @Repository
 public interface UserRepository extends MongoRepository<Users,String> {

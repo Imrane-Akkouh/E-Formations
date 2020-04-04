@@ -1,9 +1,10 @@
-package com.eformations.jwt.api.service;
+package com.eformations.services;
 
-import com.eformations.jwt.api.entity.Roles;
-import com.eformations.jwt.api.entity.Users;
-import com.eformations.jwt.api.repository.RoleRepository;
-import com.eformations.jwt.api.repository.UserRepository;
+import com.eformations.entities.Roles;
+import com.eformations.entities.Users;
+import com.eformations.repository.RoleRepository;
+import com.eformations.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

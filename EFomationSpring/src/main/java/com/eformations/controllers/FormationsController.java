@@ -1,9 +1,8 @@
-package com.eformations.jwt.api.controller;
+package com.eformations.controllers;
 
-import com.eformations.jwt.api.entity.Formations;
-import com.eformations.jwt.api.repository.FormationRepository;
-import com.eformations.jwt.api.repository.UserRepository;
-
+import com.eformations.entities.Formations;
+import com.eformations.repository.FormationRepository;
+import com.eformations.repository.UserRepository;
 
 import java.util.ArrayList;
 
@@ -27,17 +26,12 @@ public class FormationsController {
     
     @RequestMapping(value = "/myFormations", method = RequestMethod.GET)
     public ArrayList<Formations> getFormation(@RequestParam (name="username") String username ) {
-    	
-    	System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWSSSSSSSSSSSSSEEEEEEEEEERRRRRRRRRR "+ username);
-    	
     	ArrayList<String> allMyFormationsId = userRepo.findByUsername(username).getFormations();
-
+    	
     	if (allMyFormationsId != null) {
-    	
-    		return formationRepo.findAllById(allMyFormationsId);
-            
+    		return formationRepo.findAllById(allMyFormationsId); 
     	}
-    	
+  
     	return new ArrayList<Formations>();
     }   
     
