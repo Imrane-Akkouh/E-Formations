@@ -28,7 +28,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Users users = repository.findByUsername(username);
-        
         if(users != null) {
         	
             List<GrantedAuthority> authorities = getUserAuthority(users.getRoles());

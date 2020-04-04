@@ -43,9 +43,6 @@ public class AuthController {
     
     @Autowired
     private AuthenticationManager authenticationManager;
-    
-    @Autowired
-    private FormationRepository formationRepository;
    
 
     @PostMapping("/authenticate")
@@ -62,20 +59,14 @@ public class AuthController {
     
     @PostMapping("/register")
     public String register(@RequestBody AuthRequest authRequest) throws Exception {
-    	
-    	System.out.println("HELLLLLLLLLLLLLLLLLO"+authRequest.getRole());
+
         Roles role = roleRepo.findByRole(authRequest.getRole());
         Users user = new Users(authRequest.getUsername(), (new BCryptPasswordEncoder()).encode(authRequest.getPassword()),new HashSet<Roles>(Arrays.asList(role)));
         
         System.out.println(authRequest.getUsername() + " " + (new BCryptPasswordEncoder()).encode(authRequest.getPassword()) + " " + authRequest.getRole());
+        
         userRepo.save(user);
         return jwtUtil.generateToken(authRequest.getUsername());
     }
-    
-    @RequestMapping(value = "/formations", method = RequestMethod.GET)
-    public List<Formations> getFormation(@RequestHeader (name="Authorization") String token) {
-    	
-    	return formationRepository.findAll();
-    }    
     
 }

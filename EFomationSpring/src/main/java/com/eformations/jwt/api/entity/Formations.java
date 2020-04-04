@@ -30,8 +30,7 @@ public class Formations implements Serializable {
     
     private int nb_enrolled;
     
-    @DBRef
-    private ArrayList<Elements> elements;
+    private ArrayList<String> elements;
     
     // C O N S T R U C T O R S
 	public Formations() {
@@ -39,7 +38,7 @@ public class Formations implements Serializable {
 	}
 
 	public Formations(String formation_name, String objectives, String pre_requisites, String establishment, Date date,
-			int nb_places, int nb_enrolled, ArrayList<Elements> elements) {
+			int nb_places, int nb_enrolled, ArrayList<String> elements) {
 		
 		this.formation_name = formation_name;
 		this.objectives = objectives;
@@ -115,11 +114,11 @@ public class Formations implements Serializable {
 		this.nb_enrolled = nb_enrolled;
 	}
 
-	public ArrayList<Elements> getElements() {
+	public ArrayList<String> getElements() {
 		return elements;
 	}
 
-	public void setElements(ArrayList<Elements> elements) {
+	public void setElements(ArrayList<String> elements) {
 		this.elements = elements;
 	}	
 	

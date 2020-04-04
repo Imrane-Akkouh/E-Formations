@@ -26,11 +26,9 @@ public class Users implements Serializable {
     
     private int nbr_reviewers;
     
-    @DBRef
-    ArrayList <Formations> rated_fromations;
+    private ArrayList<String> rated_fromations;
     
-    @DBRef
-    ArrayList <Formations> formations;
+    private ArrayList<String> formations;
     
     @DBRef
     private Set<Roles> roles;
@@ -48,7 +46,7 @@ public class Users implements Serializable {
 	}
 	
 	public Users(String username, String password, String cv, float rating, int nbr_reviewers,
-			ArrayList<Formations> rated_fromations, ArrayList<Formations> formations, Set<Roles> roles) {
+			ArrayList<String> rated_fromations, ArrayList<String> formations, Set<Roles> roles) {
 
 		this.username = username;
 		this.password = password;
@@ -109,19 +107,19 @@ public class Users implements Serializable {
 		this.nbr_reviewers = nbr_reviewers;
 	}
 
-	public ArrayList<Formations> getRated_fromations() {
+	public ArrayList<String> getRated_fromations() {
 		return rated_fromations;
 	}
 
-	public void setRated_fromations(ArrayList<Formations> rated_fromations) {
+	public void setRated_fromations(ArrayList<String> rated_fromations) {
 		this.rated_fromations = rated_fromations;
 	}
 
-	public ArrayList<Formations> getFormations() {
+	public ArrayList<String> getFormations() {
 		return formations;
 	}
 
-	public void setFormations(ArrayList<Formations> formations) {
+	public void setFormations(ArrayList<String> formations) {
 		this.formations = formations;
 	}
 
