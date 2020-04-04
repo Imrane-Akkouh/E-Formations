@@ -1,9 +1,9 @@
 package com.eformations.jwt.api.controller;
 
-import com.eformations.jwt.api.entity.AuthRequest;
 import com.eformations.jwt.api.entity.Formations;
 import com.eformations.jwt.api.entity.Roles;
-import com.eformations.jwt.api.entity.User;
+import com.eformations.jwt.api.entity.Users;
+import com.eformations.jwt.api.models.AuthRequest;
 import com.eformations.jwt.api.repository.FormationRepository;
 import com.eformations.jwt.api.repository.RoleRepository;
 import com.eformations.jwt.api.repository.UserRepository;
@@ -31,21 +31,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin
 public class AuthController {
+	
 	@Autowired
     private UserRepository userRepo;
+	
 	@Autowired
     private RoleRepository roleRepo;
+	
     @Autowired
     private JwtUtil jwtUtil;
+    
     @Autowired
     private AuthenticationManager authenticationManager;
+    
     @Autowired
     private FormationRepository formationRepository;
-    
-    @GetMapping("/")
-    public String welcome() {
-        return "Welcome to eformations !!";
-    }
+   
 
     @PostMapping("/authenticate")
     public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
@@ -61,8 +62,10 @@ public class AuthController {
     
     @PostMapping("/register")
     public String register(@RequestBody AuthRequest authRequest) throws Exception {
+    	
+    	System.out.println("HELLLLLLLLLLLLLLLLLO"+authRequest.getRole());
         Roles role = roleRepo.findByRole(authRequest.getRole());
-        User user = new User(authRequest.getUsername(), (new BCryptPasswordEncoder()).encode(authRequest.getPassword()),new HashSet<Roles>(Arrays.asList(role)));
+        Users user = new Users(authRequest.getUsername(), (new BCryptPasswordEncoder()).encode(authRequest.getPassword()),new HashSet<Roles>(Arrays.asList(role)));
         
         System.out.println(authRequest.getUsername() + " " + (new BCryptPasswordEncoder()).encode(authRequest.getPassword()) + " " + authRequest.getRole());
         userRepo.save(user);

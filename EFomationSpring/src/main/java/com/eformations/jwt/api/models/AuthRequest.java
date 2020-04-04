@@ -1,4 +1,4 @@
-package com.eformations.jwt.api.entity;
+package com.eformations.jwt.api.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class AuthRequest {
 
     private String username;

@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "users")
-public class User implements Serializable {
+public class Users implements Serializable {
 	
     @Id
     private String id;
@@ -36,18 +36,18 @@ public class User implements Serializable {
     private Set<Roles> roles;
     
     // C O N S T R U C T O R S
-	public User() {	
+	public Users() {	
 		super();
 	}
 
-	public User(String username, String password, Set<Roles> roles) {
+	public Users(String username, String password, Set<Roles> roles) {
 
 		this.username = username;
 		this.password = password;
 		this.roles = roles;
 	}
 	
-	public User(String username, String password, String cv, float rating, int nbr_reviewers,
+	public Users(String username, String password, String cv, float rating, int nbr_reviewers,
 			ArrayList<Formations> rated_fromations, ArrayList<Formations> formations, Set<Roles> roles) {
 
 		this.username = username;

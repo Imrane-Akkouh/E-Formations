@@ -1,6 +1,6 @@
 package com.eformations.jwt.api;
 
-import com.eformations.jwt.api.entity.User;
+import com.eformations.jwt.api.entity.Users;
 import com.eformations.jwt.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;

@@ -1,7 +1,7 @@
 package com.eformations.jwt.api.service;
 
 import com.eformations.jwt.api.entity.Roles;
-import com.eformations.jwt.api.entity.User;
+import com.eformations.jwt.api.entity.Users;
 import com.eformations.jwt.api.repository.RoleRepository;
 import com.eformations.jwt.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +27,15 @@ public class CustomUserDetailsService implements UserDetailsService {
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = repository.findByUsername(username);
+        Users users = repository.findByUsername(username);
         
-        if(user != null) {
+        if(users != null) {
         	
-            List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
+            List<GrantedAuthority> authorities = getUserAuthority(users.getRoles());
             
-            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
+            return new org.springframework.security.core.userdetails.User(users.getUsername(), users.getPassword(), authorities);
         } else {
-        	return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
+        	return new org.springframework.security.core.userdetails.User(users.getUsername(), users.getPassword(), new ArrayList<>());
         }
     }
     
