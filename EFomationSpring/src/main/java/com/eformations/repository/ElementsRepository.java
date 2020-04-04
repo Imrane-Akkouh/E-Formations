@@ -7,12 +7,12 @@ import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import com.eformations.entities.Formations;
+import com.eformations.entities.Elements;
 
 @Repository
-public interface FormationRepository extends MongoRepository<Formations,String> {
+public interface ElementsRepository extends MongoRepository<Elements,String> {
 
-	ArrayList<Formations> findAllById(List<String> formationIds);
+	ArrayList<Elements> findAllById(List<String> elementsIds);
 	
-	Optional<Formations> findById(String formationId);
+	Optional<Elements> findById(String elementsId);
 }
