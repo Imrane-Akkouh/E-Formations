@@ -1,9 +1,10 @@
 package com.eformations.jwt.api.service;
 
-import com.eformations.jwt.api.entity.Roles;
-import com.eformations.jwt.api.entity.User;
-import com.eformations.jwt.api.repository.RoleRepository;
-import com.eformations.jwt.api.repository.UserRepository;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,20 +13,20 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import com.eformations.jwt.api.entity.Roles;
+import com.eformations.jwt.api.entity.User;
+import com.eformations.jwt.api.repository.UserRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 	
     @Autowired
     private UserRepository repository;
-    @Autowired
-    private RoleRepository roleRepository;
+//    @Autowired
+//    private RoleRepository roleRepository;
     
-    @Override
+    @SuppressWarnings("null")
+	@Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = repository.findByUsername(username);
         

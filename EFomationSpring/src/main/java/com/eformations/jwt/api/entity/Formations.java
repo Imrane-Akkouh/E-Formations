@@ -3,8 +3,6 @@ package com.eformations.jwt.api.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -13,6 +11,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "formations")
 public class Formations implements Serializable {
 	
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
     private String id;
     

@@ -12,7 +12,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "users")
 public class User implements Serializable {
 	
-    @Id
+	private static final long serialVersionUID = 1L;
+
+	@Id
     private String id;
     
     @Indexed(unique=true)

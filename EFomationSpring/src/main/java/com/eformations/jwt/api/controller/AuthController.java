@@ -1,15 +1,5 @@
 package com.eformations.jwt.api.controller;
 
-import com.eformations.jwt.api.entity.AuthRequest;
-import com.eformations.jwt.api.entity.Formations;
-import com.eformations.jwt.api.entity.Roles;
-import com.eformations.jwt.api.entity.User;
-import com.eformations.jwt.api.repository.FormationRepository;
-import com.eformations.jwt.api.repository.RoleRepository;
-import com.eformations.jwt.api.repository.UserRepository;
-import com.eformations.jwt.api.service.CustomUserDetailsService;
-import com.eformations.jwt.api.util.JwtUtil;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -17,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +16,15 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.eformations.jwt.api.entity.AuthRequest;
+import com.eformations.jwt.api.entity.Formations;
+import com.eformations.jwt.api.entity.Roles;
+import com.eformations.jwt.api.entity.User;
+import com.eformations.jwt.api.repository.FormationRepository;
+import com.eformations.jwt.api.repository.RoleRepository;
+import com.eformations.jwt.api.repository.UserRepository;
+import com.eformations.jwt.api.util.JwtUtil;
 
 @RestController
 @CrossOrigin
