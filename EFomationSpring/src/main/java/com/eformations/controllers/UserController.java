@@ -1,4 +1,4 @@
-package com.eformations.controller;
+package com.eformations.controllers;
 
 import com.eformations.entities.Users;
 import com.eformations.repository.UserRepository;

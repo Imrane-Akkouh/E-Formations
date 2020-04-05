@@ -1,4 +1,4 @@
-package com.eformations.controller;
+package com.eformations.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 import com.eformations.entities.File;
-import com.eformations.service.FileService;
+import com.eformations.services.FileService;
 
 @CrossOrigin
 @RestController

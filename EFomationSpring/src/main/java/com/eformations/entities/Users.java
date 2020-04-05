@@ -42,6 +42,10 @@ public class Users implements Serializable {
 		this.username = username;
 		this.password = password;
 		this.roles = roles;
+		this.rating = 0;
+		this.nbr_reviewers = 0;
+		this.rated_fromations = new ArrayList<String>();
+		this.formations = new ArrayList<String>();
 	}
 	
 	public Users(String username, String password, String cv, float rating, int nbr_reviewers,
