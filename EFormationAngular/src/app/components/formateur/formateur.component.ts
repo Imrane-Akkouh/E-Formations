@@ -11,12 +11,16 @@ import { Formation } from 'src/app/models/formation.model';
   styleUrls: ['./formateur.component.css']
 })
 export class FormateurComponent implements OnInit {
-  formations:Subject<Array<Formation>> = new BehaviorSubject<Array<Formation>>([])
+  formations:Subject<Formation[]> = new BehaviorSubject<Formation[]>([]);
+  myformations:Formation[] = [];
   constructor(private fs: FormationService, private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.fs.getFormations(this.auth.getCurrentUser().username).subscribe(formations=>{
-      this.formations.next(formations as Formation[])
+      this.formations.next(formations as Formation[]);
+    })
+    this.formations.asObservable().subscribe(formations=>{
+      this.myformations = formations;
     })
   }
 
@@ -26,6 +30,10 @@ export class FormateurComponent implements OnInit {
 
   addFormation(){
     this.router.navigate(['/formateur/newformation']);
+  }
+
+  getFormations(){
+    return this.formations.asObservable();
   }
 
 }

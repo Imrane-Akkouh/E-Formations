@@ -12,7 +12,9 @@ public class Elements implements Serializable {
 	@Id
     private String id;
     
-    private String element_name;
+	private String reference;
+
+	private String element_name;
 	
 	private int duration;
 	    
@@ -46,6 +48,14 @@ public class Elements implements Serializable {
 		this.id = id;
 	}
 
+	public String getReference() {
+		return reference;
+	}
+
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
+	
 	public String getElement_name() {
 		return element_name;
 	}

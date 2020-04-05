@@ -7,6 +7,8 @@ import com.eformations.repository.FormationRepository;
 import com.eformations.repository.UserRepository;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -35,7 +37,8 @@ public class FormationsController {
     	ArrayList<String> allMyFormationsId = userRepo.findByUsername(username).getFormations();
     	
     	if (allMyFormationsId != null) {
-    		return formationRepo.findAllById(allMyFormationsId); 
+    		ArrayList<Formations> alf =  formationRepo.findByIdIn(allMyFormationsId);
+    		return alf;
     	}
     	return new ArrayList<Formations>();
     }
@@ -50,7 +53,27 @@ public class FormationsController {
     	}
     	
     	return new ArrayList<Elements>();
-    }   
+    }
+    
+    @RequestMapping(value = "/allFormations", method = RequestMethod.GET)
+    public ArrayList<Formations> getAllFormations() {
+    	
+    	Date currentDate = new Date();
+
+        // convert date to calendar
+        Calendar c = Calendar.getInstance();
+        c.setTime(currentDate);
+
+        // manipulate date
+        c.add(Calendar.MONTH, 1);
+
+        // convert calendar to date
+        Date currentDatePlusOne = c.getTime();
+    	
+    	ArrayList<Formations> alf =  formationRepo.findByDateBetween(currentDate, currentDatePlusOne);
+    	
+    	return alf;
+    }
     
 
 }
