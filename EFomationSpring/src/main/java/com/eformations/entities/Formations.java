@@ -18,7 +18,9 @@ public class Formations implements Serializable {
     private String id;
     
     private String formation_name;
-	
+    
+    private String formateur;
+
 	private String objectives;
 	
 	private String pre_requisites;
@@ -38,10 +40,11 @@ public class Formations implements Serializable {
 		super();
 	}
 
-	public Formations(String formation_name, String objectives, String pre_requisites, String establishment, Date date,
+	public Formations(String formation_name,String formateur, String objectives, String pre_requisites, String establishment, Date date,
 			int nb_places, int nb_enrolled, ArrayList<String> elements) {
 		
 		this.formation_name = formation_name;
+		this.formateur = formateur;
 		this.objectives = objectives;
 		this.pre_requisites = pre_requisites;
 		this.establishment = establishment;
@@ -49,6 +52,14 @@ public class Formations implements Serializable {
 		this.nb_places = nb_places;
 		this.nb_enrolled = nb_enrolled;
 		this.elements = elements;
+	}
+	
+	public String getFormateur() {
+		return formateur;
+	}
+
+	public void setFormateur(String formateur) {
+		this.formateur = formateur;
 	}
 
 	public String getId() {

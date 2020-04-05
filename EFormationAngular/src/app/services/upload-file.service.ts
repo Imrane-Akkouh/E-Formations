@@ -26,7 +26,7 @@ export class UploadFileService {
  
   getFile(username:string){
     let headers = new HttpHeaders().set('Authorization', 'Bearer '+this.auth.getToken())
-    let params = new HttpParams().set('username', this.auth.getCurrentUser().username);
+    let params = new HttpParams().set('username', username);
     return this.http.get('http://localhost:8080/getfile', {headers,params});
   }
 }

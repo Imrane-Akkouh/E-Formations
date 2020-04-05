@@ -19,11 +19,18 @@ public class FileService {
     @Autowired
     private FileRepository fileRepo;
  
-    public String addCV(String name, MultipartFile file) throws IOException { 
+    public String addCV(String name, MultipartFile file) throws IOException {
+    	
         File newfile = new File(name); 
         newfile.setFile(
-          new Binary(BsonBinarySubType.BINARY, file.getBytes())); 
-        newfile = fileRepo.insert(newfile);
+          new Binary(BsonBinarySubType.BINARY, file.getBytes()));
+        
+        File existingFile = fileRepo.findByName(name);
+        if(existingFile!=null) {
+        	fileRepo.deleteById(existingFile.getId());
+        }
+        newfile = fileRepo.save(newfile);
+        
         return newfile.getId(); 
     }
  

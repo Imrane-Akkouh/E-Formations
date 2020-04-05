@@ -32,7 +32,6 @@ onFileSelected() {
     this.canSave = false;
     reader.onload = (e: any) => {
       this.pdfSrc = e.target.result;
-      console.log(this.pdfSrc);
       if (this.pdfSrc != '') {
         this.canSave = true;
       }
@@ -45,11 +44,10 @@ onFileSelected() {
 saveFile() {
   let pdf: any = document.querySelector("#file");
   this.ufs.pushFileToStorage(pdf.files[0], this.auth.getCurrentUser().username).subscribe(res => {
-    console.log(res);
   });
 }
 
-b64toBlob = (b64Data, contentType='', sliceSize=512) => {
+b64toBlob(b64Data, contentType='', sliceSize=512) {
   const byteCharacters = atob(b64Data);
   const byteArrays = [];
 

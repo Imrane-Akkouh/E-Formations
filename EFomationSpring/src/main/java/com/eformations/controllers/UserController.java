@@ -18,8 +18,8 @@ public class UserController {
 	
 	@GetMapping("/user")
     public Users user(@RequestParam String username) {
-		System.out.print(username);
 		Users user = userRepo.findByUsername(username);
+		System.out.print(user.getRated_fromations());
         return user;
     }
 

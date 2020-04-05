@@ -13,6 +13,6 @@ export class FormationService {
   getFormations(username: string){
     let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
     let params = new HttpParams().set('username', username);
-    return this.http.get('http://localhost:8080/formations', { headers, params} );
+    return this.http.get('http://localhost:8080/myFormations', { headers, params} );
   }
 }

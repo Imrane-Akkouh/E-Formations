@@ -42,7 +42,8 @@ export class LoginComponent implements OnInit {
       })
       .then(res=>{
         let user :any = res;
-        this.auth.storeUserData(userToken, new User(user.id, this.username, user.rating, user.nbr_reviewers, user.ratedFormations, user.formations, user.roles[0].role));
+        console.log(user.rated_fromations);
+        this.auth.storeUserData(userToken, new User(user.id, this.username, user.rating, user.nbr_reviewers, user.rated_fromations, user.formations, user.roles[0].role));
         if(user.roles[0].role == "BENEFICIAIRE"){
           this.router.navigate(['/beneficiaire']);
         }else{
@@ -70,7 +71,7 @@ export class LoginComponent implements OnInit {
       })
       .then(res => {
         let user: any = res;
-        this.auth.storeUserData(userToken, new User(user.id, this.username, user.rating, user.nbr_reviewers, user.ratedFormations, user.formations, user.roles[0].role));
+        this.auth.storeUserData(userToken, new User(user.id, this.username, user.rating, user.nbr_reviewers, user.rated_formations, user.formations, user.roles[0].role));
         if(user.roles[0].role == "BENEFICIAIRE"){
           this.router.navigate(['/beneficiaire']);
         }else{

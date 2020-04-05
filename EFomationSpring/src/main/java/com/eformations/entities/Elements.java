@@ -15,7 +15,9 @@ public class Elements implements Serializable {
 	@Id
     private String id;
     
-    private String element_name;
+	private String reference;
+
+	private String element_name;
 	
 	private int duration;
 	    
@@ -30,10 +32,11 @@ public class Elements implements Serializable {
 		super();
 	}
 	
-	public Elements(String element_name, int duration, Date date, float cost, int nb_beneficiaries) {
+	public Elements(String reference, String element_name, int duration, Date date, float cost, int nb_beneficiaries) {
 		super();
 		
 		this.element_name = element_name;
+		this.reference = reference;
 		this.duration = duration;
 		this.date = date;
 		this.cost = cost;
@@ -49,6 +52,14 @@ public class Elements implements Serializable {
 		this.id = id;
 	}
 
+	public String getReference() {
+		return reference;
+	}
+
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
+	
 	public String getElement_name() {
 		return element_name;
 	}

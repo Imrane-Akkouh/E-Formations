@@ -3,7 +3,6 @@
     <button class="add-form" (click)="addFormation()"> Ajouter une formation </button>
     <button class="add-cv" (click)="addCV();"> Modifier mon CV </button>
 </div>
-
 <div class="table-title">
     <h3>Mes Formations</h3>
 </div>
@@ -16,30 +15,10 @@
     </tr>
     </thead>
     <tbody class="table-hover">
-    <tr>
-    <td class="text-left">Spring</td>
-    <td  style="text-align: center;">13 / 04 / 2020</td>
-    <td  style="text-align: center;">24</td>
-    </tr>
-    <tr>
-    <td class="text-left">Angular</td>
-    <td  style="text-align: center;">13 / 04 / 2020</td>
-    <td  style="text-align: center;">24</td>
-    </tr>
-    <tr>
-    <td class="text-left">Marketing</td>
-    <td  style="text-align: center;">13 / 04 / 2020</td>
-    <td  style="text-align: center;">24</td>
-    </tr>
-    <tr>
-    <td class="text-left">Art of Manga</td>
-    <td  style="text-align: center;">13 / 04 / 2020</td>
-    <td  style="text-align: center;">24</td>
-    </tr>
-    <tr>
-    <td class="text-left">SEO Guide</td>
-    <td  style="text-align: center;">13 / 04 / 2020</td>
-    <td  style="text-align: center;">24</td>
+    <tr *ngFor="let formation of formations | async">
+    <td class="text-left">{{formation.formation_name}}</td>
+    <td  style="text-align: center;">{{formation.date | date}}</td>
+    <td  style="text-align: center;">{{formation.nb_places}}</td>
     </tr>
     </tbody>
     </table>
