@@ -1,8 +1,8 @@
-package com.eformations.jwt.api.repository;
+package com.eformations.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.eformations.jwt.api.entity.Roles;
+import com.eformations.entities.Roles;
 
 public interface RoleRepository extends MongoRepository<Roles, String> {
 

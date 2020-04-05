@@ -1,4 +1,7 @@
-package com.eformations.jwt.api.config;
+package com.eformations.config;
+
+import com.eformations.filters.JwtFilter;
+import com.eformations.services.CustomUserDetailsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,8 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.eformations.jwt.api.filter.JwtFilter;
-import com.eformations.jwt.api.service.CustomUserDetailsService;
+
 
 @Configuration
 @EnableWebSecurity

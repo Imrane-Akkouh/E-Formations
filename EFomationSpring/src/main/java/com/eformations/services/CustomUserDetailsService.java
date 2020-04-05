@@ -1,4 +1,4 @@
-package com.eformations.jwt.api.service;
+package com.eformations.services;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,9 +13,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.eformations.jwt.api.entity.Roles;
-import com.eformations.jwt.api.entity.User;
-import com.eformations.jwt.api.repository.UserRepository;
+import com.eformations.entities.Roles;
+import com.eformations.entities.Users;
+import com.eformations.repository.UserRepository;
+
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -28,15 +29,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     @SuppressWarnings("null")
 	@Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = repository.findByUsername(username);
-        
-        if(user != null) {
+        Users users = repository.findByUsername(username);
+        if(users != null) {
         	
-            List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
+            List<GrantedAuthority> authorities = getUserAuthority(users.getRoles());
             
-            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
+            return new org.springframework.security.core.userdetails.User(users.getUsername(), users.getPassword(), authorities);
         } else {
-        	return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
+        	return new org.springframework.security.core.userdetails.User(users.getUsername(), users.getPassword(), new ArrayList<>());
         }
     }
     

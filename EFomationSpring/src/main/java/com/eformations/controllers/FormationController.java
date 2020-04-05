@@ -1,4 +1,4 @@
-package com.eformations.jwt.api.controller;
+package com.eformations.controllers;
 
 import java.util.Optional;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.eformations.jwt.api.entity.Formations;
-import com.eformations.jwt.api.repository.FormationRepository;
+import com.eformations.entities.Formations;
+import com.eformations.repository.FormationRepository;
 
 @RequestMapping("/formation")
 @RestController

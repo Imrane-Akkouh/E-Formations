@@ -1,4 +1,4 @@
-package com.eformations.jwt.api.util;
+package com.eformations.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

@@ -1,4 +1,4 @@
-package com.eformations.jwt.api;
+package com.eformations;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

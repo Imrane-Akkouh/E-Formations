@@ -1,4 +1,4 @@
-package com.eformations.jwt.api.controller;
+package com.eformations.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.eformations.jwt.api.entity.Elements;
-import com.eformations.jwt.api.repository.ElementRepository;
+import com.eformations.entities.Elements;
+import com.eformations.repository.ElementRepository;
+
+
 
 public class ElementController {
 	

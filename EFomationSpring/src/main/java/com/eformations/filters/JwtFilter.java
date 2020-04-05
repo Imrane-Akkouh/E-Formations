@@ -1,7 +1,8 @@
-package com.eformations.jwt.api.filter;
+package com.eformations.filters;
 
-import com.eformations.jwt.api.service.CustomUserDetailsService;
-import com.eformations.jwt.api.util.JwtUtil;
+import com.eformations.services.CustomUserDetailsService;
+import com.eformations.utils.JwtUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

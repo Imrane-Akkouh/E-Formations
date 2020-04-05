@@ -1,4 +1,4 @@
-package com.eformations.jwt.api.entity;
+package com.eformations.entities;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.eformations.jwt.api.controller;
+package com.eformations.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.eformations.jwt.api.entity.Inscriptions;
-import com.eformations.jwt.api.repository.InscriptionRepository;
+import com.eformations.entities.Inscriptions;
+import com.eformations.repository.InscriptionRepository;
 
 @RestController
 @CrossOrigin

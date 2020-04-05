@@ -1,4 +1,4 @@
-package com.eformations.jwt.api.entity;
+package com.eformations.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "users")
-public class User implements Serializable {
+public class Users implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -28,29 +28,27 @@ public class User implements Serializable {
     
     private int nbr_reviewers;
     
-    @DBRef
-    ArrayList <Formations> rated_fromations;
+    private ArrayList<String> rated_fromations;
     
-    @DBRef
-    ArrayList <Formations> formations;
+    private ArrayList<String> formations;
     
     @DBRef
     private Set<Roles> roles;
     
     // C O N S T R U C T O R S
-	public User() {	
+	public Users() {	
 		super();
 	}
 
-	public User(String username, String password, Set<Roles> roles) {
+	public Users(String username, String password, Set<Roles> roles) {
 
 		this.username = username;
 		this.password = password;
 		this.roles = roles;
 	}
 	
-	public User(String username, String password, String cv, float rating, int nbr_reviewers,
-			ArrayList<Formations> rated_fromations, ArrayList<Formations> formations, Set<Roles> roles) {
+	public Users(String username, String password, String cv, float rating, int nbr_reviewers,
+			ArrayList<String> rated_fromations, ArrayList<String> formations, Set<Roles> roles) {
 
 		this.username = username;
 		this.password = password;
@@ -111,19 +109,19 @@ public class User implements Serializable {
 		this.nbr_reviewers = nbr_reviewers;
 	}
 
-	public ArrayList<Formations> getRated_fromations() {
+	public ArrayList<String> getRated_fromations() {
 		return rated_fromations;
 	}
 
-	public void setRated_fromations(ArrayList<Formations> rated_fromations) {
+	public void setRated_fromations(ArrayList<String> rated_fromations) {
 		this.rated_fromations = rated_fromations;
 	}
 
-	public ArrayList<Formations> getFormations() {
+	public ArrayList<String> getFormations() {
 		return formations;
 	}
 
-	public void setFormations(ArrayList<Formations> formations) {
+	public void setFormations(ArrayList<String> formations) {
 		this.formations = formations;
 	}
 
