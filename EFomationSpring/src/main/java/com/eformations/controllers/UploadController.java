@@ -22,7 +22,6 @@ public class UploadController {
 		try{
 			
 			String id = fileService.addCV(username, file);
-			System.out.println(username + " " + file + "yoho");
 			return id;
 		}catch(IOException e) {
 			throw e;
