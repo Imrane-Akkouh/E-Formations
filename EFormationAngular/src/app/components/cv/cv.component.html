@@ -1,0 +1,12 @@
+<div class="content">
+    <div style="width: 100%; display: flex; justify-self: center; align-items: center;">
+        <label for="file"> Uploader CV</label>
+        <input class="inputfile" accept="pdf" style="display: none;" name="file" (change)="onFileSelected()" type="file" id="file">
+    </div>
+    <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 40px;">
+        <button [disabled]="!canSave" (click)="saveFile()">Sauvegarder</button>
+    </div>
+    <pdf-viewer [src]="pdfSrc" *ngIf="pdfSrc!=''" [render-text]="true" [show-all]="true" style="display: block;">
+    </pdf-viewer>
+
+</div>
