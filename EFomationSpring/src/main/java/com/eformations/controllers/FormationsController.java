@@ -30,7 +30,7 @@ public class FormationsController {
    
     
     @RequestMapping(value = "/myFormations", method = RequestMethod.GET)
-    public ArrayList<Formations> getFormation(@RequestParam (name="username") String username ) {
+    public ArrayList<Formations> getFormations(@RequestParam (name="username") String username ) {
     	
     	ArrayList<String> allMyFormationsId = userRepo.findByUsername(username).getFormations();
     	

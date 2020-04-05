@@ -22,8 +22,6 @@ public class Users implements Serializable {
     
     private String password;
     
-    private String cv;
-    
     private float rating;
     
     private int nbr_reviewers;
@@ -45,6 +43,10 @@ public class Users implements Serializable {
 		this.username = username;
 		this.password = password;
 		this.roles = roles;
+		this.rating = 0;
+		this.nbr_reviewers = 0;
+		this.rated_fromations = new ArrayList<String>();
+		this.formations = new ArrayList<String>();
 	}
 	
 	public Users(String username, String password, String cv, float rating, int nbr_reviewers,
@@ -52,7 +54,6 @@ public class Users implements Serializable {
 
 		this.username = username;
 		this.password = password;
-		this.cv = cv;
 		this.rating = rating;
 		this.nbr_reviewers = nbr_reviewers;
 		this.rated_fromations = rated_fromations;
@@ -83,14 +84,6 @@ public class Users implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getCv() {
-		return cv;
-	}
-
-	public void setCv(String cv) {
-		this.cv = cv;
 	}
 
 	public float getRating() {
