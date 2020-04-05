@@ -1,14 +1,18 @@
 package com.eformations.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.eformations.entities.Elements;
-import com.eformations.repository.ElementRepository;
+import com.eformations.entities.Formations;
+import com.eformations.repository.ElementsRepository;
+import com.eformations.repository.FormationRepository;
 
 
 
@@ -16,35 +20,23 @@ public class ElementController {
 	
 	
 	@Autowired
-	private ElementRepository elementRepo;
+	private ElementsRepository elementsRepo;
+	
+	@Autowired
+	private FormationRepository formationRepo;
 
 	@RequestMapping("/add")
 	@PostMapping
 	public Elements addElement(@RequestBody final Elements element) {
-		return elementRepo.save(element);
+		return elementsRepo.save(element);
 	}
 	
-	// list all the users from mongodb store
-    @RequestMapping("/all")
-	@GetMapping
-	public Iterable<Elements> getElements() {
-		return elementRepo.findAll();
-	}
+	// list all the elements of a formation from mongo
 	
-	// update the user data in mongodb store
-    @RequestMapping("/update")
-	@PostMapping
-	public Elements update(@RequestBody final Elements element) {
-		final String id = element.getId();
-		elementRepo.deleteById(id);
-		return elementRepo.save(element);
-	}
-	
-	// delete user by id  from mongodb store 
-	@RequestMapping("/delete/{id}")
-	@GetMapping
-	public void remove(@PathVariable final String id) {
-		elementRepo.deleteById(id);
-	} 
+    @RequestMapping(value = "/formationElements", method = RequestMethod.GET)
+    public Optional<Formations> getFormationElements(@RequestParam (name="formationId") String formationId ) {
+    	 
+    	return formationRepo.findById(formationId);
+    }   
 
 }
