@@ -12,7 +12,7 @@ import com.eformations.entities.Elements;
 @Repository
 public interface ElementsRepository extends MongoRepository<Elements,String> {
 
-	ArrayList<Elements> findAllById(List<String> elementsIds);
+	ArrayList<Elements> findByIdIn(List<String> elementsIds);
 	
 	Optional<Elements> findById(String elementsId);
 }

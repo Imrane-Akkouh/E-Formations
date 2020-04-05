@@ -49,7 +49,7 @@ public class FormationsController {
     	ArrayList<String> formationElementsIds = formationRepo.findById(formationId).get().getElements();
     	
     	if (formationElementsIds != null) {
-    		return elementsRepo.findAllById(formationElementsIds); 
+    		return elementsRepo.findByIdIn(formationElementsIds); 
     	}
     	
     	return new ArrayList<Elements>();
