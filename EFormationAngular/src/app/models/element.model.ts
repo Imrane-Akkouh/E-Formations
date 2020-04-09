@@ -1,11 +1,12 @@
 export class Element{
     constructor(
-        private id: string,
-        private reference: string,
-        private element_name: string,
-        private duration: number,
-        private date: Date,
-        private cost: number,
-        private nb_beneficiaires: number
+        public id: string,
+        public reference: string,
+        public formateurId: string,
+        public element_name: string,
+        public duration: number,
+        public date: Date,
+        public cost: number,
+        public nb_beneficiaires: number
     ){}
 }

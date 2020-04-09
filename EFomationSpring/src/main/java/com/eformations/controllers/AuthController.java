@@ -1,6 +1,7 @@
 package com.eformations.controllers;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 
 import com.eformations.entities.Roles;
@@ -37,6 +38,9 @@ public class AuthController {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
             );
+            Users user = userRepo.findByUsername(authRequest.getUsername());
+            user.setLastCheckIn(new Date());
+            userRepo.save(user);
         } catch (Exception ex) {
             throw new Exception("Invalid username/password");
         }
