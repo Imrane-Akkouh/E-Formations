@@ -1,7 +1,6 @@
 export class Element{
     constructor(
         public id: string,
-        public reference: string,
         public formateurId: string,
         public element_name: string,
         public duration: number,

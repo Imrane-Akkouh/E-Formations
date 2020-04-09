@@ -38,9 +38,7 @@ public class AuthController {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
             );
-            Users user = userRepo.findByUsername(authRequest.getUsername());
-            user.setLastCheckIn(new Date());
-            userRepo.save(user);
+         
         } catch (Exception ex) {
             throw new Exception("Invalid username/password");
         }

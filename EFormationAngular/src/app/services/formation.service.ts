@@ -20,6 +20,15 @@ export class FormationService {
   createFormation(formation: Formation, elements: Element[]){
     let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
     let params = new HttpParams().set('username', this.auth.getCurrentUser().username);
-    return this.http.post('http://localhost:8080/addFormation', {formation: formation, elements: elements},{headers, params});
+    return this.http.post('http://localhost:8080/addFormation', 
+    {formation_name: formation.formation_name, 
+      formateur: formation.formateurId, 
+      objectives: formation.objectives,
+      pre_requisites: formation.pre_requisites,
+      establishment: formation.establishment,
+      date: formation.date,
+      nb_places: formation.nb_places,
+      nb_enrolled: 0,
+      elements: elements},{headers, params});
   }
 }

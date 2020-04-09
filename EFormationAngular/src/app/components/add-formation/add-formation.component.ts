@@ -17,20 +17,17 @@ export class AddFormationComponent implements OnInit {
 
   ngOnInit(): void {
     this.formation = new Formation('', '', this.auth.getCurrentUser().id, '', '', '', new Date(), 0, [])
-    this.elements = [new Element('','',this.formation.formateurId,'',0,new Date("yyyy-MM-dd"),0,0)];
+    this.elements = [new Element('', this.formation.formateurId,'',0,new Date("yyyy-MM-dd"),0,0)];
   }
 
   addElement(){
-    this.elements.push(new Element('', '',this.formation.formateurId,'',0,new Date("yyyy-MM-dd"),0,0));
+    this.elements.push(new Element('', this.formation.formateurId,'',0,new Date("yyyy-MM-dd"),0,0));
   }
   deleteElement(index: number){
     if(this.elements.length != 1)
     this.elements.splice(index,1);
   }
   saveFormation(){
-    this.elements.forEach(element=>{
-      element.reference = this.formation.formation_name;
-    })
     this.fs.createFormation(this.formation, this.elements).subscribe(formation=>{
       this.router.navigate(['/formateur']);
     })
