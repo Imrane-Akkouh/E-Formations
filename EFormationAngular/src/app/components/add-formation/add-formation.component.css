@@ -1,0 +1,89 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+h2{
+    color:#5f6266;
+}
+
+label{
+    margin: 0 10px 0 0;
+    display: block;
+}
+
+input{
+    width: 200px;
+    height: 40px;
+    padding: 5px;
+    border: solid 1px rgb(165, 165, 165);
+    border-radius: 5px;
+}
+
+textarea{
+    width: 80%;
+    border: solid 1px rgb(165, 165, 165);
+    border-radius: 5px;
+  }
+
+.group_inp{
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Roboto", helvetica, arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    
+}
+
+.group_inp div{
+    width: 50%;
+}
+
+.containing{
+    width: 80%;
+    margin: 50px auto 0 auto;
+
+}
+
+.formation_details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formation_elements{
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.164);
+    padding: 20px; 
+    background-color: rgb(238, 238, 238);
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: space-between;
+}
+
+.formation_elements div{
+    margin: 2px 10px;
+}
+
+.supprimer{
+    width: 200px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.add{
+    margin: 20px 10px;
+    display: block;
+    padding: 18px 20px;
+    width: 25vw;
+    min-width: max-content;
+    background: rgb(83, 83, 221);
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+    border: none;
+}

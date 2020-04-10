@@ -1,10 +1,7 @@
 package com.eformations.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,8 +11,10 @@ public class Elements implements Serializable {
 	
 	@Id
     private String id;
-    
-    private String element_name;
+	
+	private String formateurId;
+
+	private String element_name;
 	
 	private int duration;
 	    
@@ -30,16 +29,25 @@ public class Elements implements Serializable {
 		super();
 	}
 	
-	public Elements(String element_name, int duration, Date date, float cost, int nb_beneficiaries) {
+	public Elements(String formateurId, String element_name, int duration, Date date, float cost, int nb_beneficiaries) {
 		super();
 		
 		this.element_name = element_name;
+		this.formateurId = formateurId;
 		this.duration = duration;
 		this.date = date;
 		this.cost = cost;
 		this.nb_beneficiaries = nb_beneficiaries;
 	}
 	
+	public String getFormateurId() {
+		return formateurId;
+	}
+
+	public void setFormateurId(String formateurId) {
+		this.formateurId = formateurId;
+	}
+
 	// G E T T E R S   A N D   S E T T E R S
 	public String getId() {
 		return id;

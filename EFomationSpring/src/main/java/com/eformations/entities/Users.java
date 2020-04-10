@@ -2,6 +2,8 @@ package com.eformations.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
@@ -12,7 +14,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "users")
 public class Users implements Serializable {
 	
-    @Id
+
+	@Id
     private String id;
     
     @Indexed(unique=true)
@@ -20,7 +23,8 @@ public class Users implements Serializable {
     
     private String password;
     
-    private String cv;
+    /*@Indexed(name = "lastCheckIn", expireAfter = "7d")
+    private Date lastCheckIn;*/
     
     private float rating;
     
@@ -39,18 +43,29 @@ public class Users implements Serializable {
 	}
 
 	public Users(String username, String password, Set<Roles> roles) {
-
+		/*this.lastCheckIn = new Date();*/
 		this.username = username;
 		this.password = password;
 		this.roles = roles;
+		this.rating = 0;
+		this.nbr_reviewers = 0;
+		this.rated_fromations = new ArrayList<String>();
+		this.formations = new ArrayList<String>();
 	}
 	
+	/*public Date getLastCheckIn() {
+		return lastCheckIn;
+	}
+
+	public void setLastCheckIn(Date lastCheckIn) {
+		this.lastCheckIn = lastCheckIn;
+	}*/
+
 	public Users(String username, String password, String cv, float rating, int nbr_reviewers,
 			ArrayList<String> rated_fromations, ArrayList<String> formations, Set<Roles> roles) {
-
+		/*this.lastCheckIn = new Date();*/
 		this.username = username;
 		this.password = password;
-		this.cv = cv;
 		this.rating = rating;
 		this.nbr_reviewers = nbr_reviewers;
 		this.rated_fromations = rated_fromations;
@@ -81,14 +96,6 @@ public class Users implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getCv() {
-		return cv;
-	}
-
-	public void setCv(String cv) {
-		this.cv = cv;
 	}
 
 	public float getRating() {

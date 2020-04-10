@@ -2,7 +2,6 @@ package com.eformations.services;
 
 import com.eformations.entities.Roles;
 import com.eformations.entities.Users;
-import com.eformations.repository.RoleRepository;
 import com.eformations.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +22,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 	
     @Autowired
     private UserRepository repository;
-    @Autowired
-    private RoleRepository roleRepository;
-    
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Users users = repository.findByUsername(username);
         if(users != null) {
         	
             List<GrantedAuthority> authorities = getUserAuthority(users.getRoles());
-            
             return new org.springframework.security.core.userdetails.User(users.getUsername(), users.getPassword(), authorities);
         } else {
         	return new org.springframework.security.core.userdetails.User(users.getUsername(), users.getPassword(), new ArrayList<>());

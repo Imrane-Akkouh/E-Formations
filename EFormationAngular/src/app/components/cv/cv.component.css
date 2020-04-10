@@ -1,0 +1,33 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway';
+*{
+    font-family: Raleway;
+}
+.content{
+    margin: 40px auto;
+    width: 90%;
+}
+
+label{
+    margin: 0 auto ;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bolder;
+    width: 25vw;
+    cursor: pointer;
+    background-color: orangered; 
+    color: white;
+    padding: 15px 24px;
+    margin-bottom: 30px;
+}
+
+input{
+    width: 25vw;
+    height: 50px;
+    border: none;
+    background-color: gainsboro;
+    color: gray;
+    padding: 5px 10px;
+}
+
+
+

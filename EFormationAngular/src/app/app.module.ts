@@ -13,6 +13,12 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { FormateurComponent } from './components/formateur/formateur.component';
+import { BeneficiaireComponent } from './components/beneficiaire/beneficiaire.component';
+import { CvComponent } from './components/cv/cv.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { AddFormationComponent } from './components/add-formation/add-formation.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,11 @@ import { LoginComponent } from './components/login/login.component';
     SidebarComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    FormateurComponent,
+    BeneficiaireComponent,
+    CvComponent,
+    AddFormationComponent,
     ],
   imports: [
     BrowserModule,
@@ -29,7 +39,9 @@ import { LoginComponent } from './components/login/login.component';
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    PdfViewerModule,
+    JwtModule.forRoot({config: {tokenGetter: ()=>localStorage.getItem('token')}})
   ],
   providers: [],
   bootstrap: [AppComponent]

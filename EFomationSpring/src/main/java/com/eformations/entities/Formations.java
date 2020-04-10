@@ -3,11 +3,9 @@ package com.eformations.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Set;
+
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "formations")
@@ -17,7 +15,9 @@ public class Formations implements Serializable {
     private String id;
     
     private String formation_name;
-	
+    
+    private String formateurId;
+
 	private String objectives;
 	
 	private String pre_requisites;
@@ -30,6 +30,8 @@ public class Formations implements Serializable {
     
     private int nb_enrolled;
     
+    private boolean validated;
+    
     private ArrayList<String> elements;
     
     // C O N S T R U C T O R S
@@ -37,17 +39,35 @@ public class Formations implements Serializable {
 		super();
 	}
 
-	public Formations(String formation_name, String objectives, String pre_requisites, String establishment, Date date,
-			int nb_places, int nb_enrolled, ArrayList<String> elements) {
+	public Formations(String formation_name,String formateurId, String objectives, String pre_requisites, String establishment, Date date,
+			int nb_places, ArrayList<String> elements) {
 		
 		this.formation_name = formation_name;
+		this.formateurId = formateurId;
 		this.objectives = objectives;
 		this.pre_requisites = pre_requisites;
 		this.establishment = establishment;
 		this.date = date;
 		this.nb_places = nb_places;
-		this.nb_enrolled = nb_enrolled;
+		this.nb_enrolled = 0;
+		this.validated = false;
 		this.elements = elements;
+	}
+	
+	public boolean isValidated() {
+		return validated;
+	}
+
+	public void setValidated(boolean validated) {
+		this.validated = validated;
+	}
+
+	public String getFormateurId() {
+		return formateurId;
+	}
+
+	public void setFormateurId(String formateurId) {
+		this.formateurId = formateurId;
 	}
 
 	public String getId() {
