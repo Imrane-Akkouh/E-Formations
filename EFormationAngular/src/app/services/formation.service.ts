@@ -31,4 +31,16 @@ export class FormationService {
       nb_enrolled: 0,
       elements: elements},{headers, params});
   }
+
+  getFormation(formationId: string){
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
+    let params = new HttpParams().set('formationId',formationId);
+    return this.http.get('http://localhost:8080/getFormation',{headers, params}).toPromise();
+  }
+
+  getElements(formationId:string){
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
+    let params = new HttpParams().set('formationId',formationId);
+    return this.http.get('http://localhost:8080/formationElements',{headers, params}).toPromise();
+  }
 }

@@ -36,4 +36,8 @@ export class FormateurComponent implements OnInit {
     return this.formations.asObservable();
   }
 
+  getDetails(formation: Formation){
+    this.router.navigate(['formateur/formation_details/'+formation.id]);
+  }
+
 }
