@@ -2,14 +2,18 @@ package com.eformations.controllers;
 
 import com.eformations.entities.Elements;
 import com.eformations.entities.Formations;
+import com.eformations.entities.Users;
 import com.eformations.models.AddFormationModel;
+import com.eformations.models.InscriptionModel;
 import com.eformations.repository.ElementsRepository;
 import com.eformations.repository.FormationRepository;
+import com.eformations.repository.InscriptionRepository;
 import com.eformations.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,6 +35,9 @@ public class FormationsController {
     
     @Autowired
     private ElementsRepository elementsRepo;
+    
+    @Autowired
+    private InscriptionRepository inscriptionRepo;
    
     
     @RequestMapping(value = "/myFormations", method = RequestMethod.GET)
@@ -109,6 +116,49 @@ public class FormationsController {
     	return formationRepo.save(formationToSave);
     }
     
+    @RequestMapping(value = "/formationInscription", method = RequestMethod.POST)
+    public String formationInscription(@RequestBody InscriptionModel formationInscription ) throws Exception {
     
-
+    	try {
+	    	//save inscription
+	    	inscriptionRepo.save(formationInscription.getInscription());
+	    	
+	    	//Increment nb_beneficiaries of chosen Elements document
+	    	if (formationInscription.getElementsId().size() != 0) {
+	        	
+	    		ArrayList<Elements> chosenElements = (ArrayList<Elements>) elementsRepo.findAllById(formationInscription.getElementsId());
+	        	
+	        	for (Elements element : chosenElements) {
+	        		element.setNb_beneficiaries(element.getNb_beneficiaries()+1);
+	        	}
+	        	
+	        	elementsRepo.saveAll(chosenElements);
+	    	}
+	
+	       	//Increment nb_enrolled of chosen Formation document
+	    	Formations chosenFormation = formationRepo.findById(formationInscription.getFormationId()).orElse(null);
+	    	
+	    	if (chosenFormation != null) {
+	    		
+	    		chosenFormation.setNb_enrolled(chosenFormation.getNb_enrolled()+1);
+	  
+	    		formationRepo.save(chosenFormation);
+	    	}
+	    	
+	    	//Add this formation's id to the list of formation ids of the currently logged in beneficiaire
+	    	Users currentUser = userRepo.findById(formationInscription.getInscription().getUser_id()).orElse(null);
+	    	
+	    	if (currentUser != null && !currentUser.getFormations().contains(formationInscription.getFormationId())) {
+	    		
+	    		currentUser.getFormations().add(formationInscription.getFormationId());
+	    		
+	    		userRepo.save(currentUser);
+	    	}
+	    	
+	    	return "successful";
+    	
+    	}catch (Exception err) {
+    		throw new Exception ("failed :" + err);
+    	}
+    }
 }
