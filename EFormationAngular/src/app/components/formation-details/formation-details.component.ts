@@ -10,15 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./formation-details.component.css']
 })
 export class FormationDetailsComponent implements OnInit {
+
   formation: Formation;
   elements: Element[];
+  nb_inscriptions: number = 0;
+  
   constructor(private fs: FormationService, private router: Router) {
+    
     let formationId = this.router.url.split('/').pop();
-    console.log(formationId);
+    
     this.fs.getFormation(formationId)
       .then((formation: any) => {
         this.formation = (formation as Formation);
-        console.log(this.formation);
       })
       .then(res => {
         return this.fs.getElements(this.formation.id);
@@ -26,11 +29,18 @@ export class FormationDetailsComponent implements OnInit {
       .then((elements: any) => {
         this.elements = (elements as Element[]);
         console.log(this.elements);
-      })
-
+        this.elements.forEach(element=>{
+          this.nb_inscriptions += element.nb_beneficiaries;
+        });
+      });
   }
 
   ngOnInit(): void {
+  }
+
+  validate(){
+    console.log("validate");
+    this.fs.validerFormation(this.formation.id);
   }
 
 }

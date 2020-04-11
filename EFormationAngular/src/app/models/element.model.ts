@@ -6,6 +6,6 @@ export class Element{
         public duration: number,
         public date: Date,
         public cost: number,
-        public nb_beneficiaires: number
+        public nb_beneficiaries: number
     ){}
 }

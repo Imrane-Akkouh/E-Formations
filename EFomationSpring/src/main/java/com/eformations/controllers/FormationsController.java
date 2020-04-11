@@ -81,5 +81,15 @@ public class FormationsController {
     	Optional<Formations> formation = formationRepo.findById(formationId);
     	return formation;
     }
+    
+    @RequestMapping(value = "/validateFormation", method = RequestMethod.GET)
+    public Optional<Formations> validateFormation(@RequestParam (name="formationId") String formationId) {
+    	Optional<Formations> formation = formationRepo.findById(formationId);
+    	if(formation.isPresent()) {
+    		formation.get().setValidated(true);
+    		formationRepo.save(formation.get());
+    	}
+    	return formation;
+    }
 
 }

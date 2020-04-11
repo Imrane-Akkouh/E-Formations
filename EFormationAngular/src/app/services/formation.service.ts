@@ -43,4 +43,10 @@ export class FormationService {
     let params = new HttpParams().set('formationId',formationId);
     return this.http.get('http://localhost:8080/formationElements',{headers, params}).toPromise();
   }
+
+  validerFormation(formationId: string){
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
+    let params = new HttpParams().set('formationId',formationId);
+    return this.http.get('http://localhost:8080/validateFormation',{headers, params}).toPromise();
+  }
 }

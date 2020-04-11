@@ -16,7 +16,7 @@ export class AddFormationComponent implements OnInit {
   constructor(private auth: AuthService, private fs: FormationService, private router: Router) { }
 
   ngOnInit(): void {
-    this.formation = new Formation('', '', this.auth.getCurrentUser().id, '', '', '', new Date(), 0, [])
+    this.formation = new Formation('', '', this.auth.getCurrentUser().id, '', '', '', new Date(), 0,false, [])
     this.elements = [new Element('', this.formation.formateurId,'',0,new Date("yyyy-MM-dd"),0,0)];
   }
 
