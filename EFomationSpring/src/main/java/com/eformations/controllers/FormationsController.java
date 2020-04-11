@@ -44,6 +44,7 @@ public class FormationsController {
     	return new ArrayList<Formations>();
     }
     
+    
     @RequestMapping(value = "/formationElements", method = RequestMethod.GET)
     public ArrayList<Elements> getFormationElements(@RequestParam (name="formationId") String formationId ) {
     	

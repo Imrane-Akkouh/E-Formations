@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
       })
       .then(res=>{
         let user :any = res;
-        console.log(user.rated_fromations);
         this.auth.storeUserData(userToken, new User(user.id, this.username, user.rating, user.nbr_reviewers, user.rated_fromations, user.formations, user.roles[0].role));
         if(user.roles[0].role == "BENEFICIAIRE"){
           this.router.navigate(['/beneficiaire']);
