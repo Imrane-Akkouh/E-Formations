@@ -9,6 +9,7 @@ import com.eformations.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -75,5 +76,10 @@ public class FormationsController {
     	return alf;
     }
     
+    @RequestMapping(value = "/getFormation", method = RequestMethod.GET)
+    public Optional<Formations> getFormation(@RequestParam (name="formationId") String formationId) {
+    	Optional<Formations> formation = formationRepo.findById(formationId);
+    	return formation;
+    }
 
 }

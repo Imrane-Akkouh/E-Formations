@@ -19,7 +19,7 @@ public class Formations implements Serializable {
     
     private String formation_name;
     
-    private String formateur;
+    private String formateurId;
 
 	private String objectives;
 	
@@ -33,6 +33,8 @@ public class Formations implements Serializable {
     
     private int nb_enrolled;
     
+    private boolean validated;
+    
     private ArrayList<String> elements;
     
     // C O N S T R U C T O R S
@@ -40,26 +42,35 @@ public class Formations implements Serializable {
 		super();
 	}
 
-	public Formations(String formation_name,String formateur, String objectives, String pre_requisites, String establishment, Date date,
+	public Formations(String formation_name,String formateurId, String objectives, String pre_requisites, String establishment, Date date,
 			int nb_places, int nb_enrolled, ArrayList<String> elements) {
 		
 		this.formation_name = formation_name;
-		this.formateur = formateur;
+		this.formateurId = formateurId;
 		this.objectives = objectives;
 		this.pre_requisites = pre_requisites;
 		this.establishment = establishment;
 		this.date = date;
 		this.nb_places = nb_places;
 		this.nb_enrolled = nb_enrolled;
+		this.validated = false;
 		this.elements = elements;
 	}
 	
-	public String getFormateur() {
-		return formateur;
+	public boolean isValidated() {
+		return validated;
 	}
 
-	public void setFormateur(String formateur) {
-		this.formateur = formateur;
+	public void setValidated(boolean validated) {
+		this.validated = validated;
+	}
+
+	public String getFormateurId() {
+		return formateurId;
+	}
+
+	public void setFormateurId(String formateurId) {
+		this.formateurId = formateurId;
 	}
 
 	public String getId() {

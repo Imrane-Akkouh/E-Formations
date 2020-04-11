@@ -19,6 +19,7 @@ import { BeneficiaireComponent } from './components/beneficiaire/beneficiaire.co
 import { CvComponent } from './components/cv/cv.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AddFormationComponent } from './components/add-formation/add-formation.component';
+import { FormationDetailsComponent } from './components/formation-details/formation-details.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AddFormationComponent } from './components/add-formation/add-formation.
     BeneficiaireComponent,
     CvComponent,
     AddFormationComponent,
+    FormationDetailsComponent,
     ],
   imports: [
     BrowserModule,

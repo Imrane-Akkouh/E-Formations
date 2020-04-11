@@ -3,13 +3,6 @@ package com.eformations.controllers;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import com.eformations.entities.Roles;
-import com.eformations.entities.Users;
-import com.eformations.models.AuthRequest;
-import com.eformations.repository.RoleRepository;
-import com.eformations.repository.UserRepository;
-import com.eformations.utils.JwtUtil;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,6 +11,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.eformations.entities.Roles;
+import com.eformations.entities.Users;
+import com.eformations.models.AuthRequest;
+import com.eformations.repository.RoleRepository;
+import com.eformations.repository.UserRepository;
+import com.eformations.utils.JwtUtil;
 
 
 
@@ -40,6 +40,7 @@ public class AuthController {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
             );
+         
         } catch (Exception ex) {
             throw new Exception("Invalid username/password");
         }
