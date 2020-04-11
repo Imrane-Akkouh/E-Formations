@@ -15,4 +15,9 @@ export class FormationService {
     let params = new HttpParams().set('username', username);
     return this.http.get('http://localhost:8080/myFormations', { headers, params} );
   }
+
+  getBeneficiaireFormations(){
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
+    return this.http.get('http://localhost:8080/allFormations', { headers} );
+  }
 }

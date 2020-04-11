@@ -36,6 +36,7 @@ public class AuthController {
     @PostMapping("/authenticate")
     public String generateToken(@RequestBody AuthRequest authRequest) throws Exception{
         try {
+        	System.out.println(authRequest.getPassword());
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
             );

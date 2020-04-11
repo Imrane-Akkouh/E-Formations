@@ -20,7 +20,7 @@ public class Users implements Serializable {
     @Indexed(unique=true)
     private String username;
     
-    private String password;
+    private String password; 
     
     private float rating;
     
