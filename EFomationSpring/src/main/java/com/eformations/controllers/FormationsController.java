@@ -2,6 +2,8 @@ package com.eformations.controllers;
 
 import com.eformations.entities.Elements;
 import com.eformations.entities.Formations;
+import com.eformations.entities.Users;
+import com.eformations.models.AddFormationModel;
 import com.eformations.repository.ElementsRepository;
 import com.eformations.repository.FormationRepository;
 import com.eformations.repository.UserRepository;
@@ -13,6 +15,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -80,6 +83,44 @@ public class FormationsController {
     @RequestMapping(value = "/getFormation", method = RequestMethod.GET)
     public Optional<Formations> getFormation(@RequestParam (name="formationId") String formationId) {
     	Optional<Formations> formation = formationRepo.findById(formationId);
+    	return formation;
+    }
+    
+    @RequestMapping(value = "/addFormation", method = RequestMethod.POST)
+    public Formations addFormation(@RequestBody AddFormationModel addFormationModel ) {
+    	Optional<Users> user = userRepo.findById(addFormationModel.getFormateurId());
+    	
+    	//Destructure received data
+    	Formations formationToSave = new Formations(
+    			addFormationModel.getFormation_name(),
+    			addFormationModel.getFormateurId(),
+    			addFormationModel.getObjectives(),
+    			addFormationModel.getPre_requisites(),
+    			addFormationModel.getEstablishment(),
+    			addFormationModel.getDate(),
+    			addFormationModel.getNb_places(),
+    			0,
+    			new ArrayList<String>()
+    		);
+    	
+    	// If there are elements to be added
+    	if (addFormationModel.getElements().size() != 0) {
+        	ArrayList<Elements> savedElements =	(ArrayList<Elements>) elementsRepo.saveAll(addFormationModel.getElements());
+        	
+        	ArrayList<String> savedElementsIds = new ArrayList<String>();
+        	
+        	for(Elements element : addFormationModel.getElements()) {
+        		savedElementsIds.add(element.getId());
+        	}
+        	
+        	formationToSave.setElements(savedElementsIds);	
+    	}    	
+    	
+    	Formations formation = formationRepo.save(formationToSave);
+    	ArrayList<String> formations = user.get().getFormations();
+    	formations.add(formation.getId());
+    	user.get().setFormations(formations);
+    	userRepo.save(user.get());
     	return formation;
     }
     

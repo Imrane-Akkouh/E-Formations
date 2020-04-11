@@ -9,7 +9,17 @@ import com.eformations.entities.Elements;
 
 public class AddFormationModel implements Serializable {
     
-    private String formation_name;
+	private String id;
+	
+    public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	private String formation_name;
     
     private String formateurId;
 
