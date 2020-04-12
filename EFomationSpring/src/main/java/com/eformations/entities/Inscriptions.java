@@ -11,7 +11,9 @@ public class Inscriptions implements Serializable {
     private String id;
     
     private String user_id;
-	
+    
+    private String formationName;
+
 	private String username;
 	    
     private String email;
@@ -25,10 +27,11 @@ public class Inscriptions implements Serializable {
 		super();
 	}
 
-	public Inscriptions(String user_id, String username, String email, String address, String phone) {
+	public Inscriptions(String user_id, String FormationName, String username, String email, String address, String phone) {
 		super();
 		
 		this.user_id = user_id;
+		this.formationName = formationName;
 		this.username = username;
 		this.email = email;
 		this.address = address;
@@ -51,6 +54,14 @@ public class Inscriptions implements Serializable {
 
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
+	}
+	
+	public String getFormationName() {
+		return formationName;
+	}
+
+	public void setFormationName(String formationName) {
+		this.formationName = formationName;
 	}
 
 	public String getUsername() {

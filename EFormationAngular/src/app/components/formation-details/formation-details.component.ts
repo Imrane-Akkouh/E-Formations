@@ -39,7 +39,7 @@ export class FormationDetailsComponent implements OnInit {
   }
 
   validate(){
-    console.log("validate");
+    this.formation.validated = true;
     this.fs.validerFormation(this.formation.id);
   }
 

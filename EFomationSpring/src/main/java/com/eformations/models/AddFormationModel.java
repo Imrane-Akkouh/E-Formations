@@ -35,7 +35,17 @@ public class AddFormationModel implements Serializable {
     
     private boolean validated;
     
-    private ArrayList<Elements> elements;
+    private int totalPrice;
+    
+    public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	private ArrayList<Elements> elements;
     
     // C O N S T R U C T O R S
 	public AddFormationModel() {
@@ -43,7 +53,7 @@ public class AddFormationModel implements Serializable {
 	}
 
 	public AddFormationModel(String formation_name,String formateurId, String objectives, String pre_requisites, String establishment, Date date,
-			int nb_places) {
+			int nb_places, int totalPrice) {
 		
 		this.formation_name = formation_name;
 		this.formateurId = formateurId;
@@ -53,6 +63,7 @@ public class AddFormationModel implements Serializable {
 		this.date = date;
 		this.nb_places = nb_places;
 		this.validated = false;
+		this.totalPrice = totalPrice;
 	}
 	
 	public boolean isValidated() {

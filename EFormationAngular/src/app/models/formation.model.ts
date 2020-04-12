@@ -10,6 +10,7 @@ export class Formation{
         public nb_places: number,
         public nb_enrolled: number,
         public validated: Boolean,
+        public totalPrice: number,
         public elements: string[]){
         }
 }

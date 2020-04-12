@@ -11,14 +11,14 @@
     <tr>
     <th style="text-align: center;">Name</th>
     <th style="text-align: center;">Date</th>
-    <th style="text-align: center;">Participants</th>
+    <th style="text-align: center;">Etablissement</th>
     </tr>
     </thead>
     <tbody class="table-hover">
     <tr *ngFor="let formation of formations | async" (click)="getDetails(formation)">
     <td class="text-left">{{formation.formation_name}}</td>
     <td  style="text-align: center;">{{formation.date | date}}</td>
-    <td  style="text-align: center;">{{formation.nb_places}}</td>
+    <td  style="text-align: center;">{{formation.establishment}}</td>
     </tr>
     </tbody>
     </table>
