@@ -12,6 +12,7 @@ import { BeneficiaireComponent } from './components/beneficiaire/beneficiaire.co
 import { CvComponent } from './components/cv/cv.component';
 import { AddFormationComponent } from './components/add-formation/add-formation.component';
 import { FormationDetailsComponent } from './components/formation-details/formation-details.component';
+import { FormationElementsComponent } from './components/formation-elements/formation-elements.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent,canActivate: [AuthReverseGuard]},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'beneficiaire', component: BeneficiaireComponent, canActivate: [BeneficiaireGuard]},
   { path: 'formateur/newformation', component: AddFormationComponent, canActivate: [FormateurGuard]},
   { path: 'formateur/formation_details/:id', component: FormationDetailsComponent, canActivate: [FormateurGuard] },
+  { path: 'beneficiaire/formation_details/:id', component: FormationElementsComponent, canActivate: [BeneficiaireGuard] },
   { path: '**', component: HomeComponent, canActivate:[AuthGuard]},
   
 ];

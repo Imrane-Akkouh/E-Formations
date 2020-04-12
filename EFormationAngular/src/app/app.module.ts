@@ -20,6 +20,7 @@ import { CvComponent } from './components/cv/cv.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { AddFormationComponent } from './components/add-formation/add-formation.component';
 import { FormationDetailsComponent } from './components/formation-details/formation-details.component';
+import { FormationElementsComponent } from './components/formation-elements/formation-elements.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { FormationDetailsComponent } from './components/formation-details/format
     CvComponent,
     AddFormationComponent,
     FormationDetailsComponent,
+    FormationElementsComponent,
     ],
   imports: [
     BrowserModule,

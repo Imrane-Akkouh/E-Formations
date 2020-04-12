@@ -13,7 +13,7 @@
     </tr>
     </thead>
     <tbody class="table-hover">
-    <tr *ngFor="let formation of formations | async" (click)="showFormationDetails(formation.id)">
+    <tr *ngFor="let formation of formations | async" (click)="getElements(formation.id)">
     <td class="text-left">{{formation.formation_name}}</td>
     <td  style="text-align: center;">{{formation.date | date}}</td>
     <td  style="text-align: center;">{{formation.establishment}}</td>
