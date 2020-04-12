@@ -10,9 +10,9 @@ public class Inscriptions implements Serializable {
 	@Id
     private String id;
     
-    private String user_id;
+    private String beneficiaireId;
     
-    private String formationName;
+    private String formation;
 
 	private String username;
 	    
@@ -27,11 +27,11 @@ public class Inscriptions implements Serializable {
 		super();
 	}
 
-	public Inscriptions(String user_id, String FormationName, String username, String email, String address, String phone) {
+	public Inscriptions(String beneficiaireId, String Formation, String username, String email, String address, String phone) {
 		super();
 		
-		this.user_id = user_id;
-		this.formationName = formationName;
+		this.beneficiaireId = beneficiaireId;
+		this.formation = formation;
 		this.username = username;
 		this.email = email;
 		this.address = address;
@@ -48,20 +48,20 @@ public class Inscriptions implements Serializable {
 		this.id = id;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public String getBeneficiaireId() {
+		return beneficiaireId;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setBeneficiaireId(String beneficiaireId) {
+		this.beneficiaireId = beneficiaireId;
 	}
 	
-	public String getFormationName() {
-		return formationName;
+	public String getFormation() {
+		return formation;
 	}
 
-	public void setFormationName(String formationName) {
-		this.formationName = formationName;
+	public void setFormation(String formation) {
+		this.formation = formation;
 	}
 
 	public String getUsername() {
