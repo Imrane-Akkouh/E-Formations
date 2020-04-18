@@ -20,7 +20,5 @@ export class FormationElementsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log();
-    
   }
 }

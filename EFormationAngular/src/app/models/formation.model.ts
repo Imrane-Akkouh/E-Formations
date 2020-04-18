@@ -8,6 +8,8 @@ export class Formation{
         public establishment: string,
         public date: Date,
         public nb_places: number,
+        public nb_enrolled: number,
+        public validated: Boolean,
         public elements: string[]){
         }
 }
