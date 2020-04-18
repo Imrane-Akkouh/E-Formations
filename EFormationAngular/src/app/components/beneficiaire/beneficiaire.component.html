@@ -1,1 +1,27 @@
-<p>beneficiaire works!</p>
+
+<div class="table-title">
+    <h3>Formations disponible pour ce Mois</h3>
+</div>
+    <table class="table-fill"  style="margin-bottom: 50px;">
+    <thead>
+    <tr>
+    <th style="text-align: center;">Name</th>
+    <th style="text-align: center;">Date</th>
+    <th style="text-align: center;">Etablissement</th>
+    <th style="text-align: center;">Prix</th>
+    <th style="text-align: center;">Profile de Formateur</th>
+    </tr>
+    </thead>
+    <tbody class="table-hover">
+    <tr *ngFor="let formation of formations | async" (click)="getElements(formation.id)">
+    <td class="text-left">{{formation.formation_name}}</td>
+    <td  style="text-align: center;">{{formation.date | date}}</td>
+    <td  style="text-align: center;">{{formation.establishment}}</td>
+    <td  style="text-align: center;">{{formation.nb_enrolled}}</td>
+    <td  style="text-align: center;">{{formation.formateur}}</td> 
+    </tr>
+    </tbody>
+    </table>
+    
+    
+      

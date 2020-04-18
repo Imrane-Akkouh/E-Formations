@@ -1,8 +1,9 @@
 package com.eformations.services;
 
-import com.eformations.entities.Roles;
-import com.eformations.entities.Users;
-import com.eformations.repository.UserRepository;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,18 +13,21 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import com.eformations.entities.Roles;
+import com.eformations.entities.Users;
+import com.eformations.repository.UserRepository;
+
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 	
     @Autowired
     private UserRepository repository;
-
-    @Override
+//    @Autowired
+//    private RoleRepository roleRepository;
+    
+    @SuppressWarnings("null")
+	@Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Users users = repository.findByUsername(username);
         if(users != null) {

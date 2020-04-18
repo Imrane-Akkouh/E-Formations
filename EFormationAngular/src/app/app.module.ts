@@ -22,6 +22,7 @@ import { AddFormationComponent } from './components/add-formation/add-formation.
 import { FormationDetailsComponent } from './components/formation-details/formation-details.component';
 import { FormationInformationsComponent } from './components/formation-informations/formation-informations.component';
 import { PopupFormComponent } from './components/popup-form/popup-form.component';
+import { FormationElementsComponent } from './components/formation-elements/formation-elements.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { PopupFormComponent } from './components/popup-form/popup-form.component
     FormationDetailsComponent,
     FormationInformationsComponent,
     PopupFormComponent,
+    FormationElementsComponent,
     ],
   imports: [
     BrowserModule,

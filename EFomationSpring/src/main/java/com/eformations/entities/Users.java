@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "users")
 public class Users implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 
 	@Id
     private String id;
@@ -19,7 +20,7 @@ public class Users implements Serializable {
     @Indexed(unique=true)
     private String username;
     
-    private String password;
+    private String password; 
     
     /*@Indexed(name = "lastCheckIn", expireAfter = "7d")
     private Date lastCheckIn;*/

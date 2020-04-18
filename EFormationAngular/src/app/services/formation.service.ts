@@ -16,6 +16,11 @@ export class FormationService {
     return this.http.get('http://localhost:8080/myFormations', { headers, params} );
   }
 
+  getBeneficiaireFormations(){
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
+    return this.http.get('http://localhost:8080/allFormations', { headers} );
+  }
+  
   createFormation(formation: Formation, elements: any[]){
     let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
     return this.http.post('http://localhost:8080/addFormation', 

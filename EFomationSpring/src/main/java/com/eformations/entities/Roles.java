@@ -10,7 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Roles implements Serializable {
 
 
-    @Id
+	private static final long serialVersionUID = 1L;
+
+	@Id
     private String id;
 
     private String role;
