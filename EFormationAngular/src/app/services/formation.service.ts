@@ -48,4 +48,12 @@ export class FormationService {
     let params = new HttpParams().set('formationId',formationId);
     return this.http.get('http://localhost:8080/validateFormation',{headers, params}).toPromise();
   }
+
+  addInscription(formationId: string, elementsId: string[], inscription: any){
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
+    return this.http.post('http://localhost:8080/validateFormation',
+    {formationId:formationId,elementsId:elementsId,inscription:inscription},
+    {headers}).toPromise();
+  }
+
 }

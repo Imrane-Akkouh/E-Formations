@@ -1,0 +1,77 @@
+<div class="containing">
+    <h2 style="text-align: center;">Details de la Formation</h2>
+    <hr>
+    <div style="display: flex; justify-content: space-between;">
+        <div class="left">
+            <div>
+                <h4>Nom de Formation:</h4>
+                <p class="info">{{formation.formation_name}}</p>
+            </div>
+            <div>
+                <h4>Objectives:</h4>
+                <p class="info">{{formation.objectives}}</p>
+            </div>
+            <div>
+                <h4>Pre_requis:</h4>
+                <p class="info">{{formation.pre_requisites}}</p>
+            </div>
+            <div>
+                <h4>Etablissment:</h4>
+                <p class="info">{{formation.establishment}}</p>
+            </div>
+        </div>
+        <div class="right">
+            <div>
+                <h4>Date:</h4>
+                <p class="info">{{formation.date | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div>
+                <h4>Nb de Places:</h4>
+                <p class="info">{{formation.nb_places}}</p>
+            </div>
+            <div>
+                <h4>Nb d'inscriptions:</h4>
+                <p class="info">{{nb_inscriptions}}</p>
+            </div>
+            <div>
+                <h4>Prix Total:</h4>
+                <p class="info">{{formation.totalPrice}}</p>
+            </div>
+        </div>
+    </div>
+    
+    
+    <h2 style="text-align: center;">Elements de la Formation</h2>
+    <hr>
+    <div class="formation_elements" *ngFor="let element of elements; let i = index">
+            <div>
+                <h4>Nom:</h4>
+                <p>{{element.element_name}}</p>
+            </div>
+            <div>
+                <h4>Duration:</h4>
+                <p>{{element.duration}}</p>
+            </div>
+            <div>
+                <h4>Date:</h4>
+                <p>{{element.date | date: 'dd/MM/yyyy'}}</p>
+            </div>
+            <div>
+                <h4>Prix:</h4>
+                <p>{{element.cost}}</p>
+            </div>
+            <div>
+                <h4>Nb de Beneficiaires:</h4>
+                <p style="text-align: center;">{{element.nb_beneficiaries}}</p>
+            </div>
+        </div>
+        <div *ngIf="!formation.validated" style="display: flex; justify-content: center;">
+            <button class="add" style="background-color: rgb(49, 165, 64);box-shadow: 0 1px 10px rgba(0, 0, 0, 0.164);" (click)="validate()">Lancer la Formation</button>
+        </div>
+        <div *ngIf="formation.validated" style="color:rgb(49, 165, 64); width: 100%; display: flex; justify-content: center; align-items: center; height: 50px;margin: 30px 0;">
+            <h3 style="text-align: center; background-color: rgb(238, 238, 238); box-shadow: 0 1px 10px rgba(0, 0, 0, 0.164); padding: 20px;">
+                Formation Validée <i class="fa fa-check-circle"></i>
+            </h3>
+        </div>
+        
+</div>
