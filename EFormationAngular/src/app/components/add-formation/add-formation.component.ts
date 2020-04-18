@@ -23,7 +23,7 @@ export class AddFormationComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.formation = new Formation('', '', this.auth.getCurrentUser().id, '', '', '', new Date(), 0, 0,false, [])
+    this.formation = new Formation('', '', this.auth.getCurrentUser().id, '', '', '', new Date(), 0, 0,false,0, [])
     this.elements = [{
       formateurId: this.formation.formateurId,
       element_name: '',
@@ -50,6 +50,11 @@ export class AddFormationComponent implements OnInit {
     this.elements.splice(index,1);
   }
   saveFormation(){
+    this.elements.forEach(element=>{
+      console.log(element.cost);
+      this.formation.totalPrice = this.formation.totalPrice+element.cost;
+      console.log(this.formation.totalPrice);
+    })
     this.fs.createFormation(this.formation, this.elements).subscribe(formation=>{
       this.router.navigate(['/formateur']);
     })

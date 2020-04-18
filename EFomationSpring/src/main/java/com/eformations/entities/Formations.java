@@ -35,7 +35,17 @@ public class Formations implements Serializable {
     
     private boolean validated;
     
-    private ArrayList<String> elements;
+    private int totalPrice;
+    
+    public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	private ArrayList<String> elements;
     
     // C O N S T R U C T O R S
 	public Formations() {
@@ -43,7 +53,7 @@ public class Formations implements Serializable {
 	}
 
 	public Formations(String formation_name,String formateurId, String objectives, String pre_requisites, String establishment, Date date,
-			int nb_places, int nb_enrolled, ArrayList<String> elements) {
+			int nb_places, int nb_enrolled, int totalPrice, ArrayList<String> elements) {
 		
 		this.formation_name = formation_name;
 		this.formateurId = formateurId;
@@ -54,6 +64,7 @@ public class Formations implements Serializable {
 		this.nb_places = nb_places;
 		this.nb_enrolled = nb_enrolled;
 		this.validated = false;
+		this.totalPrice = totalPrice;
 		this.elements = elements;
 	}
 	

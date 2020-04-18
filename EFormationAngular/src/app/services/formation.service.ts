@@ -33,6 +33,7 @@ export class FormationService {
       date: formation.date,
       nb_places: formation.nb_places,
       nb_enrolled: 0,
+      totalPrice: formation.totalPrice,
       elements: elements},{headers});
   }
 

@@ -100,6 +100,7 @@ public class FormationsController {
     			addFormationModel.getDate(),
     			addFormationModel.getNb_places(),
     			0,
+    			addFormationModel.getTotalPrice(),
     			new ArrayList<String>()
     		);
     	
@@ -110,7 +111,7 @@ public class FormationsController {
         	
         	ArrayList<String> savedElementsIds = new ArrayList<String>();
         	
-        	for(Elements element : addFormationModel.getElements()) {
+        	for(Elements element : savedElements) {
         		savedElementsIds.add(element.getId());
         	}
         	
@@ -122,7 +123,7 @@ public class FormationsController {
     	formations.add(formation.getId());
     	user.get().setFormations(formations);
     	userRepo.save(user.get());
-    	return formation;
+		return formation;
     }
     
     @RequestMapping(value = "/validateFormation", method = RequestMethod.GET)
