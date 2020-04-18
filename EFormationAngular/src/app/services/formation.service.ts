@@ -56,9 +56,21 @@ export class FormationService {
 
   addInscription(formationId: string, elementsId: string[], inscription: any){
     let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
-    return this.http.post('http://localhost:8080/validateFormation',
+    return this.http.post('http://localhost:8080/formationInscription',
     {formationId:formationId,elementsId:elementsId,inscription:inscription},
     {headers}).toPromise();
+  }
+
+  getInscription(username: string, formationId: string){
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
+    let params = new HttpParams().set('username',username).set('formation',formationId);
+    return this.http.get('http://localhost:8080/getInscription',{headers, params}).toPromise();
+  }
+
+  reactivateInscription(username: string, formationId: string){
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.auth.getToken());
+    let params = new HttpParams().set('username',username).set('formation',formationId);
+    return this.http.get('http://localhost:8080/reactivateInscription',{headers, params}).toPromise();
   }
 
 }

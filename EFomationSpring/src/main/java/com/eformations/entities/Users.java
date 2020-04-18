@@ -22,9 +22,6 @@ public class Users implements Serializable {
     
     private String password; 
     
-    /*@Indexed(name = "lastCheckIn", expireAfter = "7d")
-    private Date lastCheckIn;*/
-    
     private float rating;
     
     private int nbr_reviewers;
@@ -42,7 +39,6 @@ public class Users implements Serializable {
 	}
 
 	public Users(String username, String password, Set<Roles> roles) {
-		/*this.lastCheckIn = new Date();*/
 		this.username = username;
 		this.password = password;
 		this.roles = roles;
@@ -51,18 +47,9 @@ public class Users implements Serializable {
 		this.rated_fromations = new ArrayList<String>();
 		this.formations = new ArrayList<String>();
 	}
-	
-	/*public Date getLastCheckIn() {
-		return lastCheckIn;
-	}
-
-	public void setLastCheckIn(Date lastCheckIn) {
-		this.lastCheckIn = lastCheckIn;
-	}*/
 
 	public Users(String username, String password, String cv, float rating, int nbr_reviewers,
 			ArrayList<String> rated_fromations, ArrayList<String> formations, Set<Roles> roles) {
-		/*this.lastCheckIn = new Date();*/
 		this.username = username;
 		this.password = password;
 		this.rating = rating;

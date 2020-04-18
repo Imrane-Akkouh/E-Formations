@@ -2,6 +2,7 @@ package com.eformations.controllers;
 
 import com.eformations.entities.Elements;
 import com.eformations.entities.Formations;
+import com.eformations.entities.Inscriptions;
 import com.eformations.entities.Users;
 import com.eformations.models.AddFormationModel;
 import com.eformations.models.InscriptionModel;
@@ -139,24 +140,49 @@ public class FormationsController {
     	}
     	return formation;
     }
+    
+    @RequestMapping(value = "/getInscription", method = RequestMethod.GET)
+    public Inscriptions getInscription(@RequestParam (name="formation") String formationId, @RequestParam (name="username") String username) {
+    	Inscriptions inscript = inscriptionRepo.findByFormationAndUsername(formationId, username);
+    	if(inscript!=null) {
+    		return inscript;
+    	}else {
+    		return null;
+    	}
+    }
+    
+    @RequestMapping(value = "/reactivateInscription", method = RequestMethod.GET)
+    public String reactivateInscription(@RequestParam (name="formation") String formationId, @RequestParam (name="username") String username) {
+    	Inscriptions inscript = inscriptionRepo.findByFormationAndUsername(formationId, username);
+    	try {
+    		inscript.setLastCheckIn(new Date());
+    		inscriptionRepo.save(inscript);
+    		return "successfully reactivated";
+    	}catch(Exception e) {
+    		return e.toString();
+    	}
+    }
 
     @RequestMapping(value = "/formationInscription", method = RequestMethod.POST)
     public String formationInscription(@RequestBody InscriptionModel formationInscription ) throws Exception {
     
     	try {
 	    	//save inscription
-	    	inscriptionRepo.save(formationInscription.getInscription());
+    		Inscriptions inscript = formationInscription.getInscription();
+    		inscript.setLastCheckIn(new Date());
+	    	inscriptionRepo.save(inscript);
 	    	
 	    	//Increment nb_beneficiaries of chosen Elements document
 	    	if (formationInscription.getElementsId().size() != 0) {
 	        	
-	    		ArrayList<Elements> chosenElements = (ArrayList<Elements>) elementsRepo.findAllById(formationInscription.getElementsId());
-	        	
+	    		ArrayList<Elements> chosenElements = (ArrayList<Elements>) elementsRepo.findByIdIn(formationInscription.getElementsId());
+
 	        	for (Elements element : chosenElements) {
 	        		element.setNb_beneficiaries(element.getNb_beneficiaries()+1);
 	        	}
 	        	
 	        	elementsRepo.saveAll(chosenElements);
+
 	    	}
 	
 	       	//Increment nb_enrolled of chosen Formation document
