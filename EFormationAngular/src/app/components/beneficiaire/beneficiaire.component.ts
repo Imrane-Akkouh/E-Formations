@@ -28,7 +28,6 @@ export class BeneficiaireComponent implements OnInit {
     })
   }
   getElements(formationId:string){
-    console.log(formationId);
     this.router.navigate(['beneficiaire/formation_details/'+formationId]);
   }
 }
