@@ -1,14 +1,15 @@
 <div class="container" #container>
 	<div class="form-container sign-up-container">
-		<form>
+		<form (submit)="register()">
 			<h1>Create Account</h1>
 			<div class="social-container">
 				<a href="#" class="social facebook"><i class="fa fa-facebook"></i></a>
 				<a href="#" class="social google"><i class="fa fa-google-plus"></i></a>
 			</div>
-			<span>or use your email for registration</span>
+			<hr>
+			<span style="color: red">{{registerError}}</span>
 			<input type="text" [(ngModel)]="username" name="username" placeholder="Username" />
-			<input type="password" [(ngModel)]="password" name="password" placeholder="Password" />
+			<input type="password" [(ngModel)]="password" name="password" placeholder="Password"/>
 			<div style="width:100%; margin: 1.5vh 0 2vh 0;background-color: #eee; display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;">
 				<span [ngClass]="{checked: role === 'BENEFICIAIRE'}" class="check">
 					<input type="radio" id="beneficiaire" name="role" value="beneficiaire" (change)="handleChange($event)" checked="checked">
@@ -19,7 +20,7 @@
 					<label class="label" for="formateur">Formateur</label>
 				</span>
 			</div>
-			<button (click)="register()">Sign Up</button>
+			<button type="submit">Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
@@ -32,7 +33,7 @@
 			<span>or use your account</span>
 			<input type="text" [(ngModel)]="username" name="username" placeholder="Username" />
 			<input type="password" [(ngModel)]="password" name="password" placeholder="Password" />
-			<a href="#">Forgot your password?</a>
+			<p class="error" style="color: red">{{loginError}}</p>
 			<button (click)="authenticate()">Sign In</button>
 		</form>
 	</div>

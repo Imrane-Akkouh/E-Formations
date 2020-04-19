@@ -1,0 +1,80 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+p{
+    color: #5f6266;
+}
+
+h2{
+    color:#5f6266;
+}
+
+
+.containing{
+    width: 80%;
+    margin: 50px auto 0 auto;
+
+}
+
+.formation_details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formation_elements{
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.164);
+    padding: 20px; 
+    background-color: rgb(238, 238, 238);
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: space-between;
+}
+
+.formation_elements div{
+    margin: 2px 10px;
+}
+
+
+.add{
+    margin: 20px 10px;
+    display: block;
+    padding: 18px 20px;
+    width: 25vw;
+    min-width: max-content;
+    background: rgb(83, 83, 221);
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+    border: none;
+}
+
+.popup{
+    width: 50vw;
+    min-width: 500px;
+    background-color: white;
+    height: 30vh;
+    min-height: 300px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.popup_input{
+    margin: 20px 10px 10px 20px;
+}
+
+input{
+    padding: 5px;
+    height: 35px;
+    width: 200px;
+    margin-left: 20px;
+    background-color: #ebebeb;
+    color: #5f6266;
+    border: solid 1px rgb(175, 175, 175);
+    border-radius: 3px;
+}
+
+label{
+
+}

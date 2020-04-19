@@ -1,0 +1,27 @@
+
+<div class="buttons" style="margin: 60px 0 30px 0;">
+    <button class="add-form" (click)="addFormation()"> Ajouter une formation </button>
+    <button class="add-cv" (click)="addCV();"> Modifier mon CV </button>
+</div>
+<div class="table-title">
+    <h3>Mes Formations</h3>
+</div>
+    <table class="table-fill"  style="margin-bottom: 50px;">
+    <thead>
+    <tr>
+    <th style="text-align: center;">Name</th>
+    <th style="text-align: center;">Date</th>
+    <th style="text-align: center;">Etablissement</th>
+    </tr>
+    </thead>
+    <tbody class="table-hover">
+    <tr *ngFor="let formation of formations | async" (click)="getDetails(formation)">
+    <td class="text-left">{{formation.formation_name}}</td>
+    <td  style="text-align: center;">{{formation.date | date}}</td>
+    <td  style="text-align: center;">{{formation.establishment}}</td>
+    </tr>
+    </tbody>
+    </table>
+    
+    
+      
