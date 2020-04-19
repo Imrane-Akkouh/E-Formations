@@ -13,7 +13,6 @@ export class FormationDetailsComponent implements OnInit {
 
   formation: Formation;
   elements: Element[];
-  nb_inscriptions: number = 0;
   
   constructor(private fs: FormationService, private router: Router) {
     
@@ -28,10 +27,6 @@ export class FormationDetailsComponent implements OnInit {
       })
       .then((elements: any) => {
         this.elements = (elements as Element[]);
-        console.log(this.elements);
-        this.elements.forEach(element=>{
-          this.nb_inscriptions += element.nb_beneficiaries;
-        });
       });
   }
 

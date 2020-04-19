@@ -9,7 +9,7 @@
     <th style="text-align: center;">Date</th>
     <th style="text-align: center;">Etablissement</th>
     <th style="text-align: center;">Prix</th>
-    <th style="text-align: center;">Profile de Formateur</th>
+    <th style="text-align: center;">Etat de Formation</th>
     </tr>
     </thead>
     <tbody class="table-hover">
@@ -18,7 +18,8 @@
     <td  style="text-align: center;">{{formation.date | date}}</td>
     <td  style="text-align: center;">{{formation.establishment}}</td>
     <td  style="text-align: center;">{{formation.nb_enrolled}}</td>
-    <td  style="text-align: center;">{{formation.formateur}}</td> 
+    <td  *ngIf="formation.validated" style="text-align: center;">Validé</td>
+    <td  *ngIf="!formation.validated" style="text-align: center;">En attente</td>
     </tr>
     </tbody>
     </table>
